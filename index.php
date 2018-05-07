@@ -30,14 +30,6 @@ $app->get('/', function ($request, $response, $args) {
 $app->get('/hello[/{name}]', function ($request, $response, $args) {
     $response->write("Hello, " . $args['name']);
     return $response;
-})->setArgument('name', 'World!');
-//$app->get('/hello/{name}', function ($request, $response, $args) {
-//    echo "Hello, " . $args['name'];
-//})->setName('hello');
-/**
- * Step 4: Run the Slim application
- *
- * This method should be called last. This executes the Slim application
- * and returns the HTTP response to the HTTP client.
- */
+});
+
 $app->run();
