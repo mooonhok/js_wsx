@@ -10,7 +10,7 @@ require 'connect.php';
 
 
 \Slim\Slim::registerAutoloader();
-$app = new App();
+$app = new \Slim\App();
 
 $app->get('/province',function ()use($app){
     $app->response->headers->set('Access-Control-Allow-Origin','*');
