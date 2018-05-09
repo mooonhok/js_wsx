@@ -15,7 +15,7 @@ use Slim\PDO\Statement\SelectStatement;
 
 
 //为注入依赖容器，直接调用
-$app = new Slim\App();
+$app = new Slim\App(['settings' => ['displayErrorDetails' => true]]);
 
 //$app->add(function ($request, $response, $next) {
 //    $response->getBody()->write('BEFORE');
