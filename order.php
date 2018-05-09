@@ -9,26 +9,13 @@ use Slim\PDO\Database;
 use Slim\PDO\Statement;
 use Slim\PDO\Statement\SelectStatement;
 
-//注入依赖容器
-//$container = new \Slim\Container;
-//$app = new \Slim\App($container);
+
+$app = new Slim\App();
 
 
-//为注入依赖容器，直接调用
-$app = new Slim\App(['settings' => ['displayErrorDetails' => true]]);
-
-//$app->add(function ($request, $response, $next) {
-//    $response->getBody()->write('BEFORE');
-//    $response = $next($request, $response);
-//    $response->getBody()->write('AFTER');
-//
-//    return $response;
-//});
-
-//控制后台
 $app->get('/orders', function () use ($app) {
-//    $app->response->headers->set('Access-Control-Allow-Origin','*');
-//    $app->response->headers->set('Content-Type','application/json');
+    $app->response->headers->set('Access-Control-Allow-Origin','*');
+    $app->response->headers->set('Content-Type','application/json');
 //    $page = $app->request->get('page');
     $page=0;
     $tenant_id =1000000001;
