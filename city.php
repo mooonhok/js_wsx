@@ -6,11 +6,9 @@
  * Time: 11:38
  */
  require 'vendor/autoload.php';
-//require 'Slim/App.php';
 require 'connect.php';
 
 
-//  \Slim\Slim::registerAutoloader();
 $app = new \Slim\App();
 
 $app->get('/province',function ()use($app){
