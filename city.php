@@ -5,7 +5,8 @@
  * Date: 2017/8/12
  * Time: 11:38
  */
-require 'Slim/App.php';
+ require 'vendor/autoload.php';
+//require 'Slim/App.php';
 require 'connect.php';
 
 
