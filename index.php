@@ -32,9 +32,7 @@ $app->get('/hello[/{name}]', function ($request, $response, $args) {
     return $response;
 })->setArgument('name', 'World!');
 
-$app->get('/datetime',function()use($app){
-    $app->response->headers->set('Access-Control-Allow-Origin','*');
-    $app->response->headers->set('Content-Type','application/json');
+$app->get('/datetime',function(){
     date_default_timezone_set("PRC");
     $time=date('Y-m-d H:i:s');
     echo  json_encode(array("result"=>"0","desc"=>"success","time"=>$time));
