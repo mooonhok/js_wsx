@@ -9,7 +9,7 @@ require 'Slim/App.php';
 require 'connect.php';
 
 
-\Slim\Slim::registerAutoloader();
+//  \Slim\Slim::registerAutoloader();
 $app = new \Slim\App();
 
 $app->get('/province',function ()use($app){
