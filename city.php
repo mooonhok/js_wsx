@@ -117,7 +117,7 @@ $app->post('/addpackage',function()use($app){
 });
 
 
-$app->get('/datetime',function()use($app){
+$app->get('/datetime',function(){
     $app->response->headers->set('Access-Control-Allow-Origin','*');
     $app->response->headers->set('Content-Type','application/json');
     date_default_timezone_set("PRC");
