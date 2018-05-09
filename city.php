@@ -11,9 +11,7 @@ require 'connect.php';
 
 $app = new Slim\App();
 
-$app->get('/province',function ()use($app){
-    $app->response->headers->set('Access-Control-Allow-Origin','*');
-    $app->response->headers->set('Content-Type','application/json');
+$app->get('/province',function (){
     $database=localhost();
     $selectStatement = $database->select()
         ->from('province');
