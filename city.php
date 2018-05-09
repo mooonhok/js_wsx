@@ -5,11 +5,11 @@
  * Date: 2017/8/12
  * Time: 11:38
  */
- require 'vendor/autoload.php';
+require 'vendor/autoload.php';
 require 'connect.php';
 
 
-$app = new \Slim\App();
+$app = new Slim\App();
 
 $app->get('/province',function ()use($app){
     $app->response->headers->set('Access-Control-Allow-Origin','*');
