@@ -21,25 +21,33 @@ $app->get('/province',function(Request $request,Response $response){
     echo  json_encode(array("result"=>"0","desc"=>"success","province"=>$data));
 });
 
-$app->get('/city',function(Request $request,Response $response){
-//    $app->response->headers->set('Access-Control-Allow-Origin','*');
-//    $app->response->headers->set('Content-Type','application/json');
-    $database=localhost();
-//    $pid=$request->getAttribute('pid');
-    $pid=$request->getAttributes('pid');
-    if($pid!=null||$pid!=""){
-        $selectStatement = $database->select()
-            ->from('city')
-            ->where('pid','=',$pid);
-        $stmt = $selectStatement->execute();
-        $data = $stmt->fetchAll();
-        echo  json_encode(array("result"=>"0","desc"=>"success","province"=>$data,"pid"=>$pid));
-    }else{
-//        $uri = $request->getServerParams('pid');
-        echo  json_encode(array("result"=>"0","desc"=>"lose pid".$pid));
-    }
-});
+//$app->get('/city',function(Request $request,Response $response){
+////    $app->response->headers->set('Access-Control-Allow-Origin','*');
+////    $app->response->headers->set('Content-Type','application/json');
+//    $database=localhost();
+////    $pid=$request->getAttribute('pid');
+//    $pid=$request->getAttributes('pid');
+////    $pid2=$request->
+//    if($pid!=null||$pid!=""){
+//        $selectStatement = $database->select()
+//            ->from('city')
+//            ->where('pid','=',$pid);
+//        $stmt = $selectStatement->execute();
+//        $data = $stmt->fetchAll();
+//        echo  json_encode(array("result"=>"0","desc"=>"success","province"=>$data,"pid"=>$pid));
+//    }else{
+////        $uri = $request->getServerParams('pid');
+//        echo  json_encode(array("result"=>"0","desc"=>"lose pid".$pid));
+//    }
+//});
 
+
+$app->get('/city', function (Request $req,  Response $res, $args = []) {
+    $myvar1 = $req->getParam('pid'); //检查 _GET 和 _POST [不遵循 PSR 7]
+    $myvar2 = $req->getParsedBody()['pid']; //检查 _POST  [遵循 PSR 7]
+    $myvar3 = $req->getQueryParams()['pid']; //检查 _GET [遵循 PSR 7]
+    echo $myvar1.'xxxx'.$myvar2.'xxxx'.$myvar3;
+});
 
 
 
