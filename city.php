@@ -26,7 +26,6 @@ $app->get('/city',function(Request $request,Response $response){
 //    $app->response->headers->set('Content-Type','application/json');
     $database=localhost();
     $pid=$request->getParam('pid');
-//    $pid2=$request->
     if($pid!=null||$pid!=""){
         $selectStatement = $database->select()
             ->from('city')
@@ -40,6 +39,24 @@ $app->get('/city',function(Request $request,Response $response){
     }
 });
 
+
+$app->post('/citybyp',function(Request $request,Response $response){
+//    $app->response->headers->set('Access-Control-Allow-Origin','*');
+//    $app->response->headers->set('Content-Type','application/json');
+    $database=localhost();
+    $pid = $request->getQueryParams()['pid'];
+    if($pid!=null||$pid!=""){
+        $selectStatement = $database->select()
+            ->from('city')
+            ->where('pid','=',$pid);
+        $stmt = $selectStatement->execute();
+        $data = $stmt->fetchAll();
+        echo  json_encode(array("result"=>"0","desc"=>"success","province"=>$data,"pid"=>$pid));
+    }else{
+//        $uri = $request->getServerParams('pid');
+        echo  json_encode(array("result"=>"0","desc"=>"lose pid".$pid));
+    }
+});
 
 //$app->get('/city', function (Request $req,  Response $res, $args = []) {
 //    $myvar1 = $req->getParam('pid'); //检查 _GET 和 _POST [不遵循 PSR 7]
