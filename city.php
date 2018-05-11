@@ -34,7 +34,8 @@ $app->get('/city',function(Request $request,Response $response){
         $data = $stmt->fetchAll();
         echo  json_encode(array("result"=>"0","desc"=>"success","province"=>$data));
     }else{
-        echo  json_encode(array("result"=>"0","desc"=>"lose pid"));
+        $uri = $request->getServerParams('pid');
+        echo  json_encode(array("result"=>"0","desc"=>"lose pid".$uri));
     }
 });
 
