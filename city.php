@@ -32,8 +32,9 @@ $app->get('/city',function(Request $request,Response $response){
             ->where('pid','=',$pid);
         $stmt = $selectStatement->execute();
         $data = $stmt->fetchAll();
-        $newResponse = $response->withJson($data);
-        echo  $newResponse;
+        echo  json_encode(array("result"=>"0","desc"=>"success","province"=>$data));
+    }else{
+        echo  json_encode(array("result"=>"0","desc"=>"lose pid"));
     }
 });
 
