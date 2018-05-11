@@ -44,7 +44,9 @@ $app->post('/citybyp',function(Request $request,Response $response){
 //    $app->response->headers->set('Access-Control-Allow-Origin','*');
 //    $app->response->headers->set('Content-Type','application/json');
     $database=localhost();
-    $pid = $request->getQueryParams()['pid'];
+    $body = $request->getBody();
+    $body=json_decode($body);
+    $pid=$body->pid;
     if($pid!=null||$pid!=""){
         $selectStatement = $database->select()
             ->from('city')
