@@ -10,7 +10,7 @@ use Slim\PDO\Statement;
 use Slim\PDO\Statement\SelectStatement;
 
 
-$app = new Slim\App(['settings' => ['displayErrorDetails' => true]]);
+$app = new Slim\App();
 
 
 $app->get('/orders', function (Request $request,Response $response)  {
