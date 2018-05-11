@@ -10,13 +10,13 @@ use Slim\PDO\Statement;
 use Slim\PDO\Statement\SelectStatement;
 
 
-$app = new Slim\App();
+$app = new Slim\App(['settings' => ['displayErrorDetails' => true]]);
 
 
-$app->get('/orders', function () use ($app) {
-    $app->response->headers->set('Access-Control-Allow-Origin','*');
-    $app->response->headers->set('Content-Type','application/json');
-//    $page = $app->request->get('page');
+$app->get('/orders', function (Request $request,Response $response)  {
+//$app->response->headers->set('Access-Control-Allow-Origin','*');
+//$app->response->headers->set('Content-Type','application/json');
+//$page = $app->request->get('page');
     $page=0;
     $tenant_id =1000000001;
     $per_page = 1;
