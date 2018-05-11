@@ -21,11 +21,27 @@ $app->get('/province',function(Request $request,Response $response){
     echo  json_encode(array("result"=>"0","desc"=>"success","province"=>$data));
 });
 
+$app->get('/city',function(Request $request,Response $response){
+//    $app->response->headers->set('Access-Control-Allow-Origin','*');
+//    $app->response->headers->set('Content-Type','application/json');
+    $database=localhost();
+    $pid=$request->get('pid');
+    if($pid!=null||$pid!=""){
+        $selectStatement = $database->select()
+            ->from('city')
+            ->where('pid','=',$pid);
+        $stmt = $selectStatement->execute();
+        $data = $stmt->fetchAll();
+        echo  json_encode(array("result"=>"0","desc"=>"success","city"=>$data));
+    }
+});
+
+
+
 
 $checkProxyHeaders = true;
 $trustedProxies = ['10.0.0.1', '10.0.0.2'];
 $app->add(new RKA\Middleware\IpAddress($checkProxyHeaders, $trustedProxies));
-
 
 $app->run();
 
