@@ -70,8 +70,7 @@ $app->post('/test',function(Request $request,Response $response){
     $body = $request->getBody();
     $body=json_decode($body);
     $pid=$body->pid;
-    echo $tenantid[0];
-    echo  json_encode(array("result"=>"0","desc"=>"body=".$pid.'&&&&&head='.$tenantid));
+    echo  json_encode(array("result"=>"0","desc"=>"body=".$pid.'&&&&&head='.array_values($tenantid)));
 });
 
 
