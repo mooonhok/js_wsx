@@ -66,7 +66,7 @@ $app->post('/test',function(Request $request,Response $response){
 //    $app->response->headers->set('Access-Control-Allow-Origin','*');
 //    $app->response->headers->set('Content-Type','application/json');
     $database=localhost();
-    $tenantid=$request->getHeader('tenant_id');
+    $tenantid=$request->getHeaderLine('tenant_id');
     $body = $request->getBody();
     $body=json_decode($body);
     $pid=$body->pid;
