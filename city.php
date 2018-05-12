@@ -75,7 +75,7 @@ $app->post('/test',function(Request $request,Response $response){
     $body = $request->getBody();
     $body=json_decode($body);
     $pid=$body->pid;
-    echo  json_encode(array("result"=>"0","desc"=>"body=".$pid,'head='.$a,'value'=>$headerValueArray));
+    echo  json_encode(array("result"=>"0","desc"=>"body=".$pid,'head'=>$a,'value'=>$headerValueArray));
 });
 
 
