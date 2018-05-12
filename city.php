@@ -60,13 +60,18 @@ $app->post('/citybyp',function(Request $request,Response $response){
     }
 });
 
-//$app->get('/city', function (Request $req,  Response $res, $args = []) {
-//    $myvar1 = $req->getParam('pid'); //检查 _GET 和 _POST [不遵循 PSR 7]
-//    $myvar2 = $req->getParsedBody()['pid']; //检查 _POST  [遵循 PSR 7]
-//    $myvar3 = $req->getQueryParams()['pid']; //检查 _GET [遵循 PSR 7]
-//    echo $myvar1.'xxxx'.$myvar2.'xxxx'.$myvar3;
-//});
 
+
+$app->post('/test',function(Request $request,Response $response){
+//    $app->response->headers->set('Access-Control-Allow-Origin','*');
+//    $app->response->headers->set('Content-Type','application/json');
+    $database=localhost();
+    $tenantid=$request->getHeader('tenant_id');
+    $body = $request->getBody();
+    $body=json_decode($body);
+    $pid=$body->pid;
+    echo  json_encode(array("result"=>"0","desc"=>"body=".$pid.'&&&&&head='.$tenantid));
+});
 
 
 $checkProxyHeaders = true;
