@@ -65,12 +65,16 @@ $app->post('/citybyp',function(Request $request,Response $response){
 $app->post('/test',function(Request $request,Response $response){
 //    $app->response->headers->set('Access-Control-Allow-Origin','*');
 //    $app->response->headers->set('Content-Type','application/json');
-    $database=localhost();
-    $tenantid=$request->getHeader('tenant_id');
+//    $database=localhost();
+    $headers = $request->getHeaders();
+    $a='';
+    foreach ($headers as $name => $values) {
+       $a.=$name . ": " . implode(", ", $values);
+    }
     $body = $request->getBody();
     $body=json_decode($body);
     $pid=$body->pid;
-    echo  json_encode(array("result"=>"0","desc"=>"body=".$pid.'&&&&&head='.array_values($tenantid)));
+    echo  json_encode(array("result"=>"0","desc"=>"body=".$pid.'&&&&&head='.$a));
 });
 
 
