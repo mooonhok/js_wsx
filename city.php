@@ -67,11 +67,11 @@ $app->post('/getvaluedemo',function(Request $request,Response $response){
 //    $app->response->headers->set('Content-Type','application/json');
 //    $database=localhost();
     $tenant_id = $request->getHeaderLine('tenant');//获取header中数据
-    $tid=$request->getParam('pid');//获取请求路径后数据
+    $tid=$request->getParam('tid');//获取请求路径后数据
     $body = $request->getBody();
     $body=json_decode($body);
     $pid=$body->pid;//获取body中数据
-    echo  json_encode(array("result"=>"0","desc"=>$pid,'header'=>$tenant_id));
+    echo  json_encode(array("result"=>"0","desc"=>"",'header'=>$tenant_id,"body"=>$pid,'urlp'=>$tid));
 });
 
 
