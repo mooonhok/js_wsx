@@ -68,7 +68,7 @@ $app->post('/test',function(Request $request,Response $response){
 //    $database=localhost();
 
     $tenant_id=$headerValueString = $request->getHeaderLine('tenant');
-    $tenant_id=0;
+
     $body = $request->getBody();
     $body=json_decode($body);
     $pid=$body->pid;
