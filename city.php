@@ -62,16 +62,15 @@ $app->post('/citybyp',function(Request $request,Response $response){
 
 
 
-$app->post('/test',function(Request $request,Response $response){
+$app->post('/getvaluedemo',function(Request $request,Response $response){
 //    $app->response->headers->set('Access-Control-Allow-Origin','*');
 //    $app->response->headers->set('Content-Type','application/json');
 //    $database=localhost();
-
-    $tenant_id=$headerValueString = $request->getHeaderLine('tenant');
-
+    $tenant_id = $request->getHeaderLine('tenant');//获取header中数据
+    $tid=$request->getParam('pid');//获取请求路径后数据
     $body = $request->getBody();
     $body=json_decode($body);
-    $pid=$body->pid;
+    $pid=$body->pid;//获取body中数据
     echo  json_encode(array("result"=>"0","desc"=>$pid,'header'=>$tenant_id));
 });
 
