@@ -147,19 +147,19 @@ $app->get('/getUser2',function(Request $request,Response $response){
     }
 });
 
-$app->options('/alterUser0',function(Request $request,Response $response){
+//$app->options('/alterUser0',function(Request $request,Response $response){
+//    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+//    $response=$response->withAddedHeader('Content-Type','application/json');
+//    $response=$response->withAddedHeader("Access-Control-Allow-Methods", "PUT");
+////    $app->response->headers->set("Access-Control-Allow-Methods", "PUT");
+//});
+
+
+
+$app->post('/alterUser0',function(Request $request,Response $response){
     $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
     $response=$response->withAddedHeader('Content-Type','application/json');
-    $response=$response->withAddedHeader("Access-Control-Allow-Methods", "PUT");
-//    $app->response->headers->set("Access-Control-Allow-Methods", "PUT");
-});
-
-
-
-$app->put('/alterUser0',function(Request $request,Response $response){
-    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
-    $response=$response->withAddedHeader('Content-Type','application/json');
-    $response=$response->withAddedHeader("Access-Control-Allow-Methods", "PUT");
+//    $response=$response->withAddedHeader("Access-Control-Allow-Methods", "PUT");
     $database=localhost();
     $body = $request->getBody();
     $body=json_decode($body);
