@@ -13,7 +13,7 @@ use Slim\PDO\Database;
 use Slim\PDO\Statement;
 use Slim\PDO\Statement\SelectStatement;
 
-$app = new \Slim\App();
+$app = new Slim\App();
 
 
 $app->post('/addUser',function(Request $request,Response $response){
