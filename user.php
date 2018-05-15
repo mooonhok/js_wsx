@@ -17,10 +17,9 @@ $app = new \Slim\App();
 
 
 $app->post('/addUser',function(Request $request,Response $response){
-    $response->withHeader('Access-Control-Allow-Origin','*');
-    $response->withHeader('Content-Type','application/json');
-//    $response->withAddedHeader('Access-Control-Allow-Origin','*');
-//    $response->withAddedHeader('Content-Type','application/json');
+//    $response->withHeader('Access-Control-Allow-Origin','*');
+  //  $response->withHeader('Content-Type','application/json');
+
 //    $response = $response->withHeader('Access-Control-Allow-Origin','*');
 //    $response = $response->withHeader('Content-type', 'application/json');
 //    $response.header('Access-Control-Allow-Origin','*');
@@ -34,6 +33,8 @@ $app->post('/addUser',function(Request $request,Response $response){
     $name=$body->name;
     $number=$body->number;
     $passwd=$body->passwd;
+    $response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response->withAddedHeader('Content-Type','application/json');
     $array=array();
     foreach($body as $key=>$value){
         $array[$key]=$value;
