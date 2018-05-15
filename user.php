@@ -23,8 +23,8 @@ $app->options('/addUser',function(Request $request,Response $response){
 });
 $app->post('/addUser',function(Request $request,Response $response){
     $request->withAddedHeader('Access-Control-Allow-Origin','*');
-    $response->withHeader('Access-Control-Allow-Origin','*');
-    $response->withHeader('Content-Type','application/json');
+    $response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response->withAddedHeader('Content-Type','application/json');
 //    $response->withAddedHeader('Access-Control-Allow-Origin','*');
 //    $response->withAddedHeader('Content-Type','application/json');
 //    $response = $response->withHeader('Access-Control-Allow-Origin','*');
