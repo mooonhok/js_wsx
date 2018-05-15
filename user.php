@@ -14,9 +14,7 @@ use Slim\PDO\Statement;
 use Slim\PDO\Statement\SelectStatement;
 
 $app = new \Slim\App();
-header('Access-Control-Allow-Origin','*');
-header('Content-Type','application/json');
-//$app = new Slim\App();
+
 
 $app->post('/addUser',function(Request $request,Response $response){
 //    $response->withHeader('Access-Control-Allow-Origin','*');
@@ -27,6 +25,8 @@ $app->post('/addUser',function(Request $request,Response $response){
 //    $response = $response->withHeader('Content-type', 'application/json');
 //    $response.header('Access-Control-Allow-Origin','*');
 //    $response.header('Content-type', 'application/json');
+    $response->withoutHeader('Access-Control-Allow-Origin','*');
+    $response->withoutHeader('Content-type', 'application/json');
     $database=localhost();
     $body = $request->getBody();
     $body=json_decode($body);
