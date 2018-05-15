@@ -19,8 +19,8 @@ $app = new Slim\App();
 $app->post('/addUser',function(Request $request,Response $response){
 //      $app->response->headers->set('Access-Control-Allow-Origin','*');
 //     $app->response->headers->set('Content-Type','application/json');
-    $response->withHeader('Access-Control-Allow-Origin','*');
-    $response->withHeader('Content-Type','application/json');
+    $response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response->withAddedHeader('Content-Type','application/json');
     $database=localhost();
     $body = $request->getBody();
     $body=json_decode($body);
