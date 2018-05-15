@@ -23,6 +23,7 @@ $app->options('/addUser',function(Request $request,Response $response){
 $app->post('/addUser',function(Request $request,Response $response){
     $response->withAddedHeader('Access-Control-Allow-Origin','*');
     $response->withAddedHeader('Content-Type','application/json');
+
 //    $response->withAddedHeader('Access-Control-Allow-Origin','*');
 //    $response->withAddedHeader('Content-Type','application/json');
 //    $response = $response->withHeader('Access-Control-Allow-Origin','*');
@@ -60,7 +61,7 @@ $app->post('/addUser',function(Request $request,Response $response){
                         ->values(array_values($array));
                     $insertId = $insertStatement->execute(false);
 //                    echo json_encode(array("result" => "0", "desc" => "success"));
-                    return $response->withJson(array("result" => "0", "desc" => "success"));
+                    return $response->withJson(array("result" => "0", "desc" => "success"))->withStatus(200);;
                 }else{
 //                    echo  json_encode(array("result"=>"4","desc"=>"缺少密码"));
                     return $response->withJson(array("result"=>"4","desc"=>"缺少密码"));
