@@ -12,15 +12,8 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use Slim\PDO\Database;
 use Slim\PDO\Statement;
 use Slim\PDO\Statement\SelectStatement;
-$c = new \Slim\Container();
-$c['errorHandler'] = function ($c) {
-    return function ($request, $response, $exception) use ($c) {
-        return $c['response']->withStatus(500)
-            ->withHeader('Content-Type', 'text/html')
-            ->write('Something went wrong!');
-    };
-};
-$app = new \Slim\App($c);
+
+$app = new \Slim\App();
 
 //$app = new Slim\App();
 
