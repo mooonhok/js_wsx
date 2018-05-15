@@ -21,8 +21,8 @@ $app->options('/addUser',function(Request $request,Response $response){
     $response->withAddedHeader("Access-Control-Allow-Headers", "Origin, No-Cache, X-Requested-With, If-Modified-Since, Pragma, Last-Modified, Cache-Control, Expires, Content-Type, X-E4M-With");
 });
 $app->post('/addUser',function(Request $request,Response $response){
-    $response->withAddedHeader('Access-Control-Allow-Origin','*');
-    $response->withAddedHeader('Content-Type','application/json');
+    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response=$response->withAddedHeader('Content-Type','application/json');
 
 //    $response->withAddedHeader('Access-Control-Allow-Origin','*');
 //    $response->withAddedHeader('Content-Type','application/json');
