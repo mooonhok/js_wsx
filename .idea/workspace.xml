@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49a6dea9-995e-4d9e-af2c-cdaed6804997" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user.php" afterPath="$PROJECT_DIR$/user.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wsx_os_v3/test1.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,7 +28,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="user.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="456">
@@ -36,6 +36,16 @@
               <folding>
                 <element signature="e#148#204#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test1.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/wsx_os_v3/test1.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -75,16 +85,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
               <caret line="15" column="27" lean-forward="false" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Route.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Slim/Route.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="969">
-              <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -132,6 +132,7 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/order.php" />
         <option value="$PROJECT_DIR$/user.php" />
+        <option value="$PROJECT_DIR$/wsx_os_v3/test1.html" />
       </list>
     </option>
   </component>
@@ -172,6 +173,17 @@
               <item name="js_wsx" type="b2602c69:ProjectViewProjectNode" />
               <item name="js_wsx" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="js_wsx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="js_wsx" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="wsx_os_v3" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="js_wsx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="js_wsx" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="wsx_os_v3" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -184,6 +196,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\youming\js_wsx\wsx_os_v3" />
       <recent name="C:\wamp64\www\Slim-3.x\Slim" />
       <recent name="C:\wamp64\www\Slim-3.x" />
     </key>
@@ -214,12 +227,12 @@
       <workItem from="1523439011967" duration="278000" />
       <workItem from="1523603016525" duration="2873000" />
       <workItem from="1525487541110" duration="2565000" />
-      <workItem from="1526353157816" duration="4009000" />
+      <workItem from="1526353157816" duration="4376000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14291000" />
+    <option name="totallyTimeSpent" value="14658000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -670,6 +683,14 @@
           <folding>
             <element signature="e#148#204#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wsx_os_v3/test1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
