@@ -61,7 +61,7 @@ $app->post('/addUser',function(Request $request,Response $response){
                         ->values(array_values($array));
                     $insertId = $insertStatement->execute(false);
 //                    echo json_encode(array("result" => "0", "desc" => "success"));
-                    return $response->withJson(array("result" => "0", "desc" => "success"))->withStatus(200);;
+                    return $response->withJson(array("result" => "0", "desc" => "success"));
                 }else{
 //                    echo  json_encode(array("result"=>"4","desc"=>"缺少密码"));
                     return $response->withJson(array("result"=>"4","desc"=>"缺少密码"));
