@@ -17,18 +17,18 @@ $app = new \Slim\App();
 
 
 $app->post('/addUser',function(Request $request,Response $response){
-    $response->withHeader('Access-Control-Allow-Origin','*');
-    $response->withHeader('Content-Type','application/json');
- //   $response->withAddedHeader('Access-Control-Allow-Origin','*');
- //   $response->withAddedHeader('Content-Type','application/json');
+//    $response->withHeader('Access-Control-Allow-Origin','*');
+//    $response->withHeader('Content-Type','application/json');
+//    $response->withAddedHeader('Access-Control-Allow-Origin','*');
+//    $response->withAddedHeader('Content-Type','application/json');
 //    $response = $response->withHeader('Access-Control-Allow-Origin','*');
 //    $response = $response->withHeader('Content-type', 'application/json');
 //    $response.header('Access-Control-Allow-Origin','*');
 //    $response.header('Content-type', 'application/json');
-//    $response->header('Access-Control-Allow-Origin','*');
-//    $response->header('Content-type', 'application/json');
 //    $response->withoutHeader('Access-Control-Allow-Origin','*');
 //    $response->withoutHeader('Content-type', 'application/json');
+//    $response->header('Access-Control-Allow-Origin','*');
+//    $response->header('Content-type', 'application/json');
     $database=localhost();
     $body = $request->getBody();
     $body=json_decode($body);
@@ -50,7 +50,7 @@ $app->post('/addUser',function(Request $request,Response $response){
                     $data = $stmt->fetchAll();
                     $password=encode($passwd , 'cxphp');
                     $array['passwd']=$password;
-                    $array['id']=count($data);
+                    $array['id']=count($data)+1;
                     $insertStatement = $database->insert(array_keys($array))
                         ->into('user')
                         ->values(array_values($array));
