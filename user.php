@@ -21,6 +21,7 @@ $app->options('/addUser',function(Request $request,Response $response){
     $response->withAddedHeader("Access-Control-Allow-Methods", "POST");
 });
 $app->post('/addUser',function(Request $request,Response $response){
+    $request->withHeader('Access-Control-Allow-Origin','*');
     $response->withHeader('Access-Control-Allow-Origin','*');
     $response->withHeader('Content-Type','application/json');
 //    $response->withAddedHeader('Access-Control-Allow-Origin','*');
