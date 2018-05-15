@@ -154,7 +154,26 @@ $app->get('/getUser2',function(Request $request,Response $response){
 ////    $app->response->headers->set("Access-Control-Allow-Methods", "PUT");
 //});
 
-
+$app->get('/getUser3',function(Request $request,Response $response){
+    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response=$response->withAddedHeader('Content-Type','application/json');
+    $database=localhost();
+    $id=$request->getParam('id');
+    if($id!=null||$id!=""){
+        $selectStatement = $database->select()
+            ->from('user')
+            ->where('id','=',$id);
+        $stmt = $selectStatement->execute();
+        $data = $stmt->fetch();
+        if($data!=null){
+            return $response->withJson(array("result" => "0", "desc" => "success",'user'=>$data));
+        }else{
+            return $response->withJson(array("result"=>"2","desc"=>"用户不存在"));
+        }
+    }else{
+        return $response->withJson(array("result"=>"1","desc"=>"缺少id"));
+    }
+});
 
 $app->post('/alterUser0',function(Request $request,Response $response){
     $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
