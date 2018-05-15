@@ -16,10 +16,17 @@ use Slim\PDO\Statement;
 use Slim\PDO\Statement\SelectStatement;
 $app = new Slim\App();
 
+
+$app->options('/addUser',function()use($app){
+    $app->response->headers->set('Access-Control-Allow-Origin','*');
+    $app->response->headers->set('Content-Type','application/json');
+    $app->response->headers->set("Access-Control-Allow-Methods", "POST");
+});
+
 $app->post('/addUser',function(Request $request,Response $response){
 //      $app->response->headers->set('Access-Control-Allow-Origin','*');
-//     $app->response->headers->set('Content-Type','application/json');
-//    $response->withHeader('Access-Control-Allow-Origin','*');
+     $app->response->headers->set('Content-Type','application/json');
+     $response->withHeader('Access-Control-Allow-Origin','*');
 //    $response->withHeader('Content-Type','application/json');
     //    $response->withAddedHeader('Access-Control-Allow-Origin','*');
 //    $response->withAddedHeader('Content-Type','application/json');
