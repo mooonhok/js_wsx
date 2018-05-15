@@ -17,6 +17,10 @@ use Slim\PDO\Statement\SelectStatement;
 $app = new Slim\App();
 
 $app->post('/addUser',function(Request $request,Response $response){
+//      $app->response->headers->set('Access-Control-Allow-Origin','*');
+//     $app->response->headers->set('Content-Type','application/json');
+    $response->withHeader('Access-Control-Allow-Origin','*');
+    $response->withHeader('Content-Type','application/json');
     $database=localhost();
     $body = $request->getBody();
     $body=json_decode($body);
@@ -36,6 +40,8 @@ $app->post('/addUser',function(Request $request,Response $response){
                         ->from('user');
                     $stmt = $selectStatement->execute();
                     $data = $stmt->fetchAll();
+                    $password=encode($passwd , 'cxphp');
+                    $array['passwd']=$password;
                     $array['id']=count($data);
                     $insertStatement = $database->insert(array_keys($array))
                         ->into('user')
@@ -58,8 +64,6 @@ $app->post('/addUser',function(Request $request,Response $response){
 
 
 
-
-
 $checkProxyHeaders = true;
 $trustedProxies = ['10.0.0.1', '10.0.0.2'];
 $app->add(new RKA\Middleware\IpAddress($checkProxyHeaders, $trustedProxies));
@@ -69,6 +73,23 @@ $app->run();
 function localhost()
 {
     return connect();
+}
+
+function encode($string , $skey ) {
+    $strArr = str_split(base64_encode($string));
+    $strCount = count($strArr);
+    foreach (str_split($skey) as $key => $value)
+        $key < $strCount && $strArr[$key].=$value;
+    return str_replace(array('=', '+', '/'), array('O0O0O', 'o000o', 'oo00o'), join('', $strArr));
+}
+
+//解密
+function decode($string, $skey) {
+    $strArr = str_split(str_replace(array('O0O0O', 'o000o', 'oo00o'), array('=', '+', '/'), $string), 2);
+    $strCount = count($strArr);
+    foreach (str_split($skey) as $key => $value)
+        $key <= $strCount  && isset($strArr[$key]) && $strArr[$key][1] === $value && $strArr[$key] = $strArr[$key][0];
+    return base64_decode(join('', $strArr));
 }
 
 ?>
