@@ -156,6 +156,7 @@ $app->put('/alterUser0',function(Request $request,Response $response){
     $body=json_decode($body);
     $id=$body->id;
     $passwd=$body->passwd;
+    $array=array();
     if($id!=null||$id!=""){
         if($passwd!=null||$passwd!=""){
             $selectStatement = $database->select()
