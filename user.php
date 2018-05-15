@@ -14,12 +14,7 @@ use Slim\PDO\Statement;
 use Slim\PDO\Statement\SelectStatement;
 
 $app = new \Slim\App();
-$app->options('/addUser',function(Request $request,Response $response){
-    $response->withAddedHeader('Access-Control-Allow-Origin','*');
-    $response->withAddedHeader('Content-Type','application/json');
-    $response->withAddedHeader("Access-Control-Allow-Methods", "POST");
-    $response->withAddedHeader("Access-Control-Allow-Headers", "Origin, No-Cache, X-Requested-With, If-Modified-Since, Pragma, Last-Modified, Cache-Control, Expires, Content-Type, X-E4M-With");
-});
+
 $app->post('/addUser',function(Request $request,Response $response){
     $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
     $response=$response->withAddedHeader('Content-Type','application/json');
@@ -67,13 +62,13 @@ $app->post('/addUser',function(Request $request,Response $response){
                     return $response->withJson(array("result"=>"4","desc"=>"缺少密码"));
                 }
             }else{
-                echo  json_encode(array("result"=>"3","desc"=>"缺少身份证号"));
+                return $response->withJson(array("result"=>"3","desc"=>"缺少身份证号"));
             }
         }else{
-            echo  json_encode(array("result"=>"2","desc"=>"缺少姓名"));
+            return $response->withJson(array("result"=>"2","desc"=>"缺少姓名"));
         }
     }else{
-        echo  json_encode(array("result"=>"1","desc"=>"缺少电话"));
+        return $response->withJson(array("result"=>"1","desc"=>"缺少电话"));
     }
 });
 
