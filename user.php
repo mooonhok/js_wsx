@@ -7,22 +7,30 @@
  */
 require 'vendor/autoload.php';
 require 'connect.php';
-
-
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use Slim\PDO\Database;
 use Slim\PDO\Statement;
 use Slim\PDO\Statement\SelectStatement;
-$app = new Slim\App();
+$c = new \Slim\Container();
+$c['errorHandler'] = function ($c) {
+    return function ($request, $response, $exception) use ($c) {
+        return $c['response']->withStatus(500)
+            ->withHeader('Content-Type', 'text/html')
+            ->write('Something went wrong!');
+    };
+};
+$app = new \Slim\App($c);
+
+//$app = new Slim\App();
 
 $app->post('/addUser',function(Request $request,Response $response){
 //      $app->response->headers->set('Access-Control-Allow-Origin','*');
 //     $app->response->headers->set('Content-Type','application/json');
-    $response->withHeader('Access-Control-Allow-Origin','*');
-    $response->withHeader('Content-Type','application/json');
-    $response->withAddedHeader('Access-Control-Allow-Origin','*');
-    $response->withAddedHeader('Content-Type','application/json');
+//    $response->withHeader('Access-Control-Allow-Origin','*');
+//    $response->withHeader('Content-Type','application/json');
+//    $response->withAddedHeader('Access-Control-Allow-Origin','*');
+//    $response->withAddedHeader('Content-Type','application/json');
 //    $response = $response->withHeader('Access-Control-Allow-Origin','*');
 //    $response = $response->withHeader('Content-type', 'application/json');
     $database=localhost();
