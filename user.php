@@ -13,12 +13,12 @@ use Slim\PDO\Database;
 use Slim\PDO\Statement;
 use Slim\PDO\Statement\SelectStatement;
 
-$app = new Slim\App();
+$app = new \Slim\App();
 
 
 $app->post('/addUser',function(Request $request,Response $response){
-    $response->withHeader('Access-Control-Allow-Origin','*');
-    $response->withHeader('Content-Type','application/json');
+//    $response->withHeader('Access-Control-Allow-Origin','*');
+//    $response->withHeader('Content-Type','application/json');
  //   $response->withAddedHeader('Access-Control-Allow-Origin','*');
  //   $response->withAddedHeader('Content-Type','application/json');
 //    $response = $response->withHeader('Access-Control-Allow-Origin','*');
