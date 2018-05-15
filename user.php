@@ -22,10 +22,10 @@ $app->post('/addUser',function(Request $request,Response $response){
 //     $app->response->headers->set('Content-Type','application/json');
 //    $response->withHeader('Access-Control-Allow-Origin','*');
 //    $response->withHeader('Content-Type','application/json');
-//    $response->withAddedHeader('Access-Control-Allow-Origin','*');
-//    $response->withAddedHeader('Content-Type','application/json');
-    $response = $response->withHeader('Access-Control-Allow-Origin','*');
-    $response = $response->withHeader('Content-type', 'application/json');
+    $response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response->withAddedHeader('Content-Type','application/json');
+//    $response = $response->withHeader('Access-Control-Allow-Origin','*');
+//    $response = $response->withHeader('Content-type', 'application/json');
     $database=localhost();
     $body = $request->getBody();
     $body=json_decode($body);
