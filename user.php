@@ -147,12 +147,12 @@ $app->get('/getUser2',function(Request $request,Response $response){
     }
 });
 
-$app->options('/alterUser0',function(Request $request,Response $response){
-    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
-    $response=$response->withAddedHeader('Content-Type','application/json');
-    $response=$response->withAddedHeader("Access-Control-Allow-Methods", "PUT");
-    return $response;
-});
+//$app->options('/alterUser0',function(Request $request,Response $response){
+//    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+//    $response=$response->withAddedHeader('Content-Type','application/json');
+//    $response=$response->withAddedHeader("Access-Control-Allow-Methods", "PUT");
+//    return $response;
+//});
 
 $app->get('/getUser3',function(Request $request,Response $response){
     $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
