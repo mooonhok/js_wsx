@@ -268,7 +268,32 @@ $app->post('/alterUser1',function(Request $request,Response $response){
     }
 });
 
-
+$app->get('/getUser4',function(Request $request,Response $response){
+    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response=$response->withAddedHeader('Content-Type','application/json');
+    $database=localhost();
+    $id=$request->getParam('id');
+    $passwd=$request->getParam('passwd');
+    if($id!=null||$id!=""){
+        if($passwd!=null||$passwd!=""){
+            $selectStatement = $database->select()
+                ->from('user')
+                ->where('passwd','=',encode($passwd , 'cxphp'))
+                ->where('id','=',$id);
+            $stmt = $selectStatement->execute();
+            $data = $stmt->fetch();
+            if($data!=null){
+                return $response->withJson(array("result" => "0", "desc" => "success",'user'=>$data));
+            }else{
+                return $response->withJson(array("result"=>"2","desc"=>"用户不存在"));
+            }
+        }else{
+            return $response->withJson(array("result"=>"3","desc"=>"缺少密码"));
+        }
+    }else{
+        return $response->withJson(array("result"=>"1","desc"=>"缺少id"));
+    }
+});
 //$checkProxyHeaders = true;
 //$trustedProxies = ['10.0.0.1', '10.0.0.2'];
 //$app->add(new RKA\Middleware\IpAddress($checkProxyHeaders, $trustedProxies));
