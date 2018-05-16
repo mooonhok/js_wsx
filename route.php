@@ -24,7 +24,7 @@ $app->get('/getRoutes',function(Request $request,Response $response){
         $stmt = $selectStatement->execute();
         $data = $stmt->fetchAll();
         if($data!=null){
-            return $response->withJson(array("result" => "0", "desc" => "success",'user'=>$data));
+            return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$data));
         }else{
             return $response->withJson(array("result"=>"2","desc"=>"尚未有数据"));
         }
