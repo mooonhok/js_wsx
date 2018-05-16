@@ -210,8 +210,57 @@ $app->post('/alterUser0',function(Request $request,Response $response){
     }
 });
 
-
 $app->post('/alterUser1',function(Request $request,Response $response){
+    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response=$response->withAddedHeader('Content-Type','application/json');
+//    $response=$response->withAddedHeader("Access-Control-Allow-Methods", "PUT");
+    $database=localhost();
+    $body = $request->getBody();
+    $body=json_decode($body);
+    $id=$body->id;
+    $phone=$body->phone;//获取body中数据
+    $name=$body->name;
+    $number=$body->number;
+    $array=array();
+    foreach($body as $key=>$value){
+        if($key!="id"){
+            $array[$key]=$value;
+        }
+    }
+    if($id!=null||$id!=""){
+        if($phone!=null||$phone!=""){
+            if($name!=null||$name!=""){
+                if($number!=null||$number!=""){
+
+                        $selectStatement = $database->select()
+                            ->from('user')
+                            ->where('id','=',$id);
+                        $stmt = $selectStatement->execute();
+                        $data = $stmt->fetch();
+                        if($data!=null){
+                            $updateStatement = $database->update($array)
+                                ->table('user')
+                                ->where('id', '=',$id);
+                            $affectedRows = $updateStatement->execute();
+                            return $response->withJson(array("result" => "0", "desc" => "success"));
+                        }else{
+                            return $response->withJson(array("result"=>"6","desc"=>"用户不存在"));
+                        }
+                }else{
+                    return $response->withJson(array("result"=>"3","desc"=>"缺少身份证号"));
+                }
+            }else{
+                return $response->withJson(array("result"=>"2","desc"=>"缺少姓名"));
+            }
+        }else{
+            return $response->withJson(array("result"=>"1","desc"=>"缺少电话"));
+        }
+    }else{
+        return $response->withJson(array("result"=>"5","desc"=>"缺少id"));
+    }
+});
+
+$app->post('/alterUser2',function(Request $request,Response $response){
     $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
     $response=$response->withAddedHeader('Content-Type','application/json');
 //    $response=$response->withAddedHeader("Access-Control-Allow-Methods", "PUT");
