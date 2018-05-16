@@ -1,0 +1,946 @@
+<html>
+	<head>
+        <title>靖江市万事鑫</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		<link type="text/css" href="css/prompt.css" rel="stylesheet">
+		<link rel="shortcut icon" href="favicon.ico" />
+		<style>
+			*{
+				margin:0 auto;
+				padding:0;
+				font-size:0;
+				font-family:"微软雅黑";
+			}
+			.header{
+				width:100%;
+				height:95px;
+				background:#1596fa;
+			}
+			.logo{
+				width:360px;
+				height:55px;
+				position:absolute;
+				top:20px;
+				left:75px;
+				cursor:pointer;
+			}
+			#logo{
+				width:197px;
+				height:55px;
+			}
+			#title{
+				height:55px;
+				font-size:24px;
+				line-height:55px;
+				color:#ffffff;
+				vertical-align:top;
+				margin-left:18px;
+			}
+			.hello{
+				height:50px;
+				position:absolute;
+				top:0;
+				right:75px;
+			}
+			.hello div{
+				display:inline-block;
+				margin-left:30px;
+			}
+			.hello *{
+				font-size:15px;
+				color:#ffffff;
+			}
+			.name{
+				line-height:50px;
+			}
+			.info{
+				line-height:50px;
+				cursor:pointer;
+			}
+			.info img{
+				width:16px;
+				height:16px;
+				vertical-align:top;
+				margin-top:17px;
+			}
+			.exit{
+				width:60px;
+				height:25px;
+				line-height:25px;
+				text-align:center;
+				background:rgba(0,0,0,0.6);
+				cursor:pointer;
+			}
+			.nav{
+				height:45px;
+				position:absolute;
+				top:50px;
+				right:75px;
+			}
+			.nav-item{
+				display:inline-block;
+				width:115px;
+				height:45px;
+				font-size:16px;
+				line-height:40px;
+				color:#ffffff;
+				text-align:center;
+				float:right;
+				cursor:pointer;
+			}
+			.nav-item:hover{
+				background:#ebebeb;
+				color:#1596fa;
+			}
+			.nav-active{
+				background:#ebebeb;
+				color:#1596fa;
+			}
+			
+			.view{
+				display:none;
+				padding:30px 75px 20px 75px;
+				background:#ebebeb;
+			}
+			.info-view{
+				display:none;
+				padding:30px 75px 20px 75px;
+				background:#ebebeb;
+			}
+			.visible{
+				display:block;
+			}
+			
+			.content{
+				display:inline-block;
+				width:77%;
+				margin-right:4%;
+				vertical-align:top;
+			}
+			.detail{
+				width:100%;
+				background:#ffffff;
+				border:1px solid #dddddd;
+				margin-bottom:10px;
+			}
+			.detail-title{
+				font-size:15px;
+				background:#f2f2f2;
+				border-bottom:1px solid #dddddd;
+				padding:9px 20px;
+			}
+			.info-content{
+				padding:30px 0;
+				text-align:center;
+			}
+			.info-div{
+				margin-bottom:10px;
+			}
+			.info-tip{
+				display:inline-block;
+				width:88px;
+				height:32px;
+				font-size:15px;
+				line-height:32px;
+				text-align:right;
+				margin-right:10px;
+			}
+			.info-star{
+				display:inline-block;
+				width:12px;
+				font-size:15px;
+				color:red;
+				text-align:left;
+			}
+			.info-div input{
+				width:320px;
+				height:36px;
+				font-size:15px;
+				padding:0 10px;
+				border:1px solid #dddddd;
+				box-sizing:border-box;
+				outline:0;
+			}
+			.info-btn{
+				margin-top:30px;
+			}
+			.info-btn input{
+				width:120px;
+				height:40px;
+				font-size:16px;
+				background:#1596fa;
+				color:#ffffff;
+				border:none;
+				margin-left:-99px;
+				cursor:pointer;
+			}
+			.route-content{
+				padding:0;
+			}
+			.route-content table{
+				width:100%;
+				box-sizing:border-box;
+			}
+			.route-content table tr th,.route-content table tr td{
+				height:36px;
+				font-size:15px;
+				text-align:center;
+				border:1px solid #dddddd;
+			}
+			.route-content input{
+				width:66px;
+				height:28px;
+				font-size:15px;
+				background:orange;
+				color:#ffffff;
+				border:none;
+				cursor:pointer;
+			}
+			.consignor-content,.consignee-content,.goods-content,.service-content{
+				padding:20px 0 10px 0;
+			}
+			.order-center{
+				margin-bottom:10px;
+			}
+			.order-left,.order-right{
+				display:inline-block;
+				width:50%;
+			}
+			.order-center input{
+				width:200px;
+				height:30px;
+				font-size:15px;
+				padding:0 4px;
+				border:1px solid #dddddd;
+				outline:0;
+			}
+			.order-center select{
+				width:200px;
+				height:30px;
+				font-size:15px;
+				border:1px solid #dddddd;
+				outline:0;
+				margin-right:10px;
+			}
+			.order-unit{
+				font-size:15px;
+				margin-left:5px;
+			}
+			#consignor-address,#consignee-address{
+				width:300px;
+			}
+			
+			.service{
+				display:inline-block;
+				width:19%;
+				padding:20px 0;
+				background:#ffffff;
+				vertical-align:top;
+				text-align:center;
+			}
+			.service-box{
+				width:86%;
+			}
+			.service-box div{
+				margin-top:20px;
+			}
+			.official{
+				width:86%;
+				height:50px;
+				font-size:18px;
+				line-height:50px;
+				background:#1596fa;
+				color:#ffffff;
+				cursor:pointer;
+			}
+			.service-title{
+				font-size:18px;
+				text-align:left;
+			}
+			.service-hotline{
+				font-size:16px;
+				text-align:left;
+				color:red;
+			}
+			.service-time{
+				font-size:15px;
+				text-align:left;
+			}
+			.service-img img{
+				width:140px;
+			}
+			.service-qq{
+				width:100%;
+				height:40px;
+				background:orange;
+				cursor:pointer;
+			}
+			.service-qq:hover{
+				background:#1596fa;
+			}
+			.service-qq a{
+				font-size:16px;
+				line-height:40px;
+				text-decoration:none;
+				color:#ffffff;
+				vertical-align:top;
+			}
+			.service-qq img{
+				width:22px;
+				height:22px;
+				margin-top:11px;
+			}
+			
+			.footer{
+				width:100%;
+				height:85px;
+				background:#1596fa;
+			}
+			.footer-left{
+				color:#ffffff;
+				float:left;
+				margin:19px 0 0 75px;
+			}
+			.hotline{
+				font-size:18px;
+			}
+			.copyright{
+				font-size:16px;
+			}
+			.footer-right{
+				float:right;
+				margin:22px 75px 0 0;
+			}
+		</style>
+	</head>
+	<body id="os">
+		<div class="header">
+			<div class="logo" onclick="window.location.href='member.html'">
+				<img id="logo" src="images/logo.png" />
+				<span id="title">线上营运中心</span>
+			</div>
+			<div class="hello">
+				<div class="name"><span id="name"></span>，欢迎您！</div>
+				<div class="info" onclick="info()"><img src="images/info.png" />个人资料</div>
+				<div class="exit" onclick="exit()">注销</div>
+			</div>
+			<div class="nav">
+				<div class="nav-item" onclick="navTo(0)">运价查询</div>
+				<div class="nav-item" onclick="navTo(1)">运单查询</div>
+				<div class="nav-item" onclick="navTo(2)">我的运单</div>
+				<div class="nav-item" onclick="navTo(3)">快速下单</div>
+				<div class="nav-item nav-active" onclick="navTo(4)">线路查询</div>
+			</div>
+		</div>
+		<div class="view">
+			<div class="content">
+			</div>
+			<div class="service">
+				<div class="official" onclick="window.location.href='index.html'">万事鑫联运官网</div>
+				<div class="service-box">
+					<div class="service-title">客服中心</div>
+					<div class="service-hotline">客服热线：0523 - 8116 5089</div>
+					<div class="service-time">服务时间：8:00 AM - 22:00PM</div>
+					<div class="service-img"><img src="images/service.jpg" /></div>
+					<div class="service-qq"><a href="http://sighttp.qq.com/msgrd?v=1&uin=2972769552" target="_self"><img src="images/qq.png" />下单咨询</a></div>
+					<div class="service-qq"><a href="http://sighttp.qq.com/msgrd?v=1&uin=1004178122" target="_self"><img src="images/qq.png" />下单咨询</a></div>
+					<div class="service-qq"><a href="http://sighttp.qq.com/msgrd?v=1&uin=3499154131" target="_self"><img src="images/qq.png" />意见反馈</a></div>
+				</div>
+			</div>
+		</div>
+		<div class="view">
+			<div class="content">
+			</div>
+			<div class="service">
+				<div class="official" onclick="window.location.href='index.html'">万事鑫联运官网</div>
+				<div class="service-box">
+					<div class="service-title">客服中心</div>
+					<div class="service-hotline">客服热线：0523 - 8116 5089</div>
+					<div class="service-time">服务时间：8:00 AM - 22:00PM</div>
+					<div class="service-img"><img src="images/service.jpg" /></div>
+					<div class="service-qq"><a href="http://sighttp.qq.com/msgrd?v=1&uin=2972769552" target="_self"><img src="images/qq.png" />下单咨询</a></div>
+					<div class="service-qq"><a href="http://sighttp.qq.com/msgrd?v=1&uin=1004178122" target="_self"><img src="images/qq.png" />下单咨询</a></div>
+					<div class="service-qq"><a href="http://sighttp.qq.com/msgrd?v=1&uin=3499154131" target="_self"><img src="images/qq.png" />意见反馈</a></div>
+				</div>
+			</div>
+		</div>
+		<div class="view">
+			<div class="content">
+			</div>
+			<div class="service">
+				<div class="official" onclick="window.location.href='index.html'">万事鑫联运官网</div>
+				<div class="service-box">
+					<div class="service-title">客服中心</div>
+					<div class="service-hotline">客服热线：0523 - 8116 5089</div>
+					<div class="service-time">服务时间：8:00 AM - 22:00PM</div>
+					<div class="service-img"><img src="images/service.jpg" /></div>
+					<div class="service-qq"><a href="http://sighttp.qq.com/msgrd?v=1&uin=2972769552" target="_self"><img src="images/qq.png" />下单咨询</a></div>
+					<div class="service-qq"><a href="http://sighttp.qq.com/msgrd?v=1&uin=1004178122" target="_self"><img src="images/qq.png" />下单咨询</a></div>
+					<div class="service-qq"><a href="http://sighttp.qq.com/msgrd?v=1&uin=3499154131" target="_self"><img src="images/qq.png" />意见反馈</a></div>
+				</div>
+			</div>
+		</div>
+		<div class="view">
+			<div class="content">
+				<div class="detail">
+					<div class="detail-title">托运人</div>
+					<div class="consignor-content">
+						<div class="order-center">
+							<div class="order-left consignor-name">
+								<div class="info-tip"><span class="info-star">*</span>托运人：</div>
+								<input type="text" id="consignor-name" />
+							</div>
+							<div class="order-right consignor-phone">
+								<div class="info-tip"><span class="info-star">*</span>电话：</div>
+								<input type="text" id="consignor-phone" />
+							</div>
+						</div>
+						<div class="order-center consignor-address">
+							<div class="info-tip"><span class="info-star">*</span>发货地址：</div>
+							<select id="consignor-province" onchange="hunt1(parseFloat(this.value))">
+								<option value="0">请选择省</option>
+								<option v-for="item in province" value="{{item.id}}">{{item.name}}</option>
+							</select>
+							<select id="consignor-city" onchange="hunt3(parseFloat(this.value))">
+								<option value="0">请选择市</option>
+								<option v-for="item in city1" value="{{item.id}}">{{item.name}}</option>
+							</select>
+							<input type="text" id="consignor-address" />
+						</div>
+					</div>
+				</div>
+				<div class="detail">
+					<div class="detail-title">收货人</div>
+					<div class="consignee-content">
+						<div class="order-center">
+							<div class="order-left consignee-name">
+								<div class="info-tip"><span class="info-star">*</span>托运人：</div>
+								<input type="text" id="consignee-name" />
+							</div>
+							<div class="order-right consignee-phone">
+								<div class="info-tip"><span class="info-star">*</span>电话：</div>
+								<input type="text" id="consignee-phone" />
+							</div>
+						</div>
+						<div class="order-center consignee-address">
+							<div class="info-tip"><span class="info-star">*</span>发货地址：</div>
+							<select id="consignee-province" onchange="hunt2(parseFloat(this.value))">
+								<option value="0">请选择省</option>
+								<option v-for="item in province" value="{{item.id}}">{{item.name}}</option>
+							</select>
+							<select id="consignee-city" onchange="hunt4(parseFloat(this.value))">
+								<option value="0">请选择市</option>
+								<option v-for="item in city2" value="{{item.id}}">{{item.name}}</option>
+							</select>
+							<input type="text" id="consignee-address" />
+						</div>
+					</div>
+				</div>
+				<div class="detail">
+					<div class="detail-title">货物信息</div>
+					<div class="goods-content">
+						<div class="order-center">
+							<div class="order-left">
+								<div class="info-tip"><span class="info-star">*</span>货物名称：</div>
+								<input type="text" id="goods-name" />
+							</div>
+							<div class="order-right">
+								<div class="info-tip"><span class="info-star"></span>件数：</div>
+								<input type="text" id="goods-count" /><span class="order-unit">件</span>
+							</div>
+						</div>
+						<div class="order-center">
+							<div class="order-left">
+								<div class="info-tip"><span class="info-star"></span>体积：</div>
+								<input type="text" id="goods-capacity" /><span class="order-unit">m³</span>
+							</div>
+							<div class="order-right">
+								<div class="info-tip"><span class="info-star">*</span>重量：</div>
+								<input type="text" id="goods-weight" /><span class="order-unit">吨</span>
+							</div>
+						</div>
+						<div class="order-center">
+							<div class="order-left">
+								<div class="info-tip"><span class="info-star">*</span>包装：</div>
+								<select id="goods-package">
+									<option>请选择</option>
+									<option v-for="item in goods_package" value="{{item.goods_package_id}}">{{item.goods_package}}</option>
+								</select>
+							</div>
+							<div class="order-right">
+								<div class="info-tip"><span class="info-star">*</span>实际价值：</div>
+								<input type="text" id="goods-value" /><span class="order-unit">万元</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="detail">
+					<div class="detail-title">服务信息</div>
+					<div class="service-content">
+						<div class="order-center">
+							<div class="order-left">
+								<div class="info-tip"><span class="info-star">*</span>提货方式：</div>
+								<select id="goods-need">
+									<option>请选择</option>
+									<option value="门店自提">门店自提</option>
+									<option value="送货上门">送货上门</option>
+								</select>
+							</div>
+							<div class="order-right">
+								<div class="info-tip"><span class="info-star">*</span>结算方式：</div>
+								<select id="goods-method">
+									<option>请选择</option>
+									<option value="0">现付</option>
+									<option value="1">到付</option>
+									<option value="2">月结</option>
+									<option value="3">回单</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="service">
+				<div class="official" onclick="window.location.href='index.html'">万事鑫联运官网</div>
+				<div class="service-box">
+					<div class="service-title">客服中心</div>
+					<div class="service-hotline">客服热线：0523 - 8116 5089</div>
+					<div class="service-time">服务时间：8:00 AM - 22:00PM</div>
+					<div class="service-img"><img src="images/service.jpg" /></div>
+					<div class="service-qq"><a href="http://sighttp.qq.com/msgrd?v=1&uin=2972769552" target="_self"><img src="images/qq.png" />下单咨询</a></div>
+					<div class="service-qq"><a href="http://sighttp.qq.com/msgrd?v=1&uin=1004178122" target="_self"><img src="images/qq.png" />下单咨询</a></div>
+					<div class="service-qq"><a href="http://sighttp.qq.com/msgrd?v=1&uin=3499154131" target="_self"><img src="images/qq.png" />意见反馈</a></div>
+				</div>
+			</div>
+		</div>
+		<div class="view visible">
+			<div class="content">
+				<div class="detail">
+					<div class="detail-title">推荐线路</div>
+					<div class="route-content">
+						<table cellpadding="0"  cellspacing="0" frame="void" rules="all">
+							<tr>
+								<th>线路</th>
+								<th>服务品牌</th>
+								<th>参考时间</th>
+								<th>单价（重货）</th>
+								<th>单价（轻货）</th>
+								<th>最低一票</th>
+								<th>操作</th>
+							</tr>
+							<tr v-for="item in route">
+								<td>{{item.line}}</td>
+								<td>{{item.brand}}</td>
+								<td>{{item.time}}</td>
+								<td>{{item.price_heavy}}</td>
+								<td>{{item.price_light}}</td>
+								<td>{{item.lowest}}</td>
+								<td><input type="button" value="下单" /></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="service">
+				<div class="official" onclick="window.location.href='index.html'">万事鑫联运官网</div>
+				<div class="service-box">
+					<div class="service-title">客服中心</div>
+					<div class="service-hotline">客服热线：0523 - 8116 5089</div>
+					<div class="service-time">服务时间：8:00 AM - 22:00PM</div>
+					<div class="service-img"><img src="images/service.jpg" /></div>
+					<div class="service-qq"><a href="http://sighttp.qq.com/msgrd?v=1&uin=2972769552" target="_self"><img src="images/qq.png" />下单咨询</a></div>
+					<div class="service-qq"><a href="http://sighttp.qq.com/msgrd?v=1&uin=1004178122" target="_self"><img src="images/qq.png" />下单咨询</a></div>
+					<div class="service-qq"><a href="http://sighttp.qq.com/msgrd?v=1&uin=3499154131" target="_self"><img src="images/qq.png" />意见反馈</a></div>
+				</div>
+			</div>
+		</div>
+		<div class="info-view">
+			<div class="content">
+				<div class="detail">
+					<div class="detail-title">个人资料</div>
+					<div class="info-content">
+						<div class="info-div">
+							<div class="info-tip"><span class="info-star">*</span>手机号码：</div>
+							<input type="text" id="info-phone" readonly="readonly" />
+						</div>
+						<div class="info-div">
+							<div class="info-tip"><span class="info-star">*</span>真实姓名：</div>
+							<input type="text" id="info-name" />
+						</div>
+						<div class="info-div">
+							<div class="info-tip"><span class="info-star">*</span>身份证号：</div>
+							<input type="text" id="info-number" />
+						</div>
+						<div class="info-div">
+							<div class="info-tip"><span class="info-star"></span>单位名称：</div>
+							<input type="text" id="info-company" />
+						</div>
+						<div class="info-div">
+							<div class="info-tip"><span class="info-star"></span>联系地址：</div>
+							<input type="text" id="info-address" />
+						</div>
+						<div class="info-div">
+							<div class="info-tip"><span class="info-star"></span>固定电话：</div>
+							<input type="text" id="info-telephone" />
+						</div>
+						<div class="info-div">
+							<div class="info-tip"><span class="info-star"></span>邮箱：</div>
+							<input type="email" id="info-email" />
+						</div>
+						<div class="info-div">
+							<div class="info-tip"><span class="info-star"></span>旧密码：</div>
+							<input type="password" id="info-passwd" placeholder="不更改密码，请留空" />
+						</div>
+						<div class="info-div">
+							<div class="info-tip"><span class="info-star"></span>新密码：</div>
+							<input type="password" id="info-passwd1" placeholder="8-16位，同时包含字符和数字" />
+						</div>
+						<div class="info-div">
+							<div class="info-tip"><span class="info-star"></span>确认密码：</div>
+							<input type="password" id="info-passwd2" placeholder="不更改密码，请留空" />
+						</div>
+						<div class="info-btn">
+							<input type="button" id="info-alter" value="确定修改" onclick="info_alter()" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="service">
+				<div class="official" onclick="window.location.href='index.html'">万事鑫联运官网</div>
+				<div class="service-box">
+					<div class="service-title">客服中心</div>
+					<div class="service-hotline">客服热线：0523 - 8116 5089</div>
+					<div class="service-time">服务时间：8:00 AM - 22:00PM</div>
+					<div class="service-img"><img src="images/service.jpg" /></div>
+					<div class="service-qq"><a href="http://sighttp.qq.com/msgrd?v=1&uin=2972769552" target="_self"><img src="images/qq.png" />下单咨询</a></div>
+					<div class="service-qq"><a href="http://sighttp.qq.com/msgrd?v=1&uin=1004178122" target="_self"><img src="images/qq.png" />下单咨询</a></div>
+					<div class="service-qq"><a href="http://sighttp.qq.com/msgrd?v=1&uin=3499154131" target="_self"><img src="images/qq.png" />意见反馈</a></div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="footer-left">
+				<div class="hotline">客服热线：0523 - 8116 5089‬</div>
+				<div class="copyright">Copyright &copy; 2018 靖江市万事鑫联运服务有限公司. All rights reserved.<a target="_blank" href="#"></a></div>
+			</div>
+			<div class="footer-right"><img src="images/slogan.png"></div>
+		</div>
+		<div class="mask"></div>
+		<div class="prompt-view" id="alert-view">
+			<div class="prompt-top">提示</div>
+			<div class="prompt-center"></div>
+			<div class="prompt-bottom">
+				<input type="button" value="知道了" onclick="a_know()" />
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="js/prompt.js"></script>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script>
+			var url="http://123.207.144.43/";
+			var url_ym="http://api.uminfor.cn/";
+			var vm;
+			vm=new Vue({
+				el:'#os',
+				data:{
+					route:{},
+					province:{},
+					city1:{},
+					city2:{},
+					goods_package:{}
+				}
+			});
+			
+			$(document).ready(function(){
+				$.ajax({
+					url:url+"user.php/getUser3?id="+sessionStorage.getItem("user-id"),
+					dataType:'json',
+					type:'get',
+					ContentType:"application/json;charset=utf-8",
+					data:JSON.stringify({
+					}),
+					success:function(msg){
+						if(msg.result==0){
+							$("#name").text(msg.user.name);
+							$("#info-phone").val(msg.user.phone);
+							$("#info-name").val(msg.user.name);
+							$("#info-number").val(msg.user.number);
+							$("#info-company").val(msg.user.company);
+							$("#info-address").val(msg.user.address);
+							$("#info-telephone").val(msg.user.telephone);
+							$("#info-email").val(msg.user.email);
+						}else{
+							window.location.href="operate.html";
+						}
+					},
+					error:function(e){
+						console.log(e);
+					}
+				});
+				$.ajax({
+					url:url+"route.php/getRoutes",
+					dataType:'json',
+					type:'get',
+					ContentType:"application/json;charset=utf-8",
+					data:JSON.stringify({
+					}),
+					success:function(msg){
+						vm.route=msg.routes;
+					},
+					error:function(e){
+						console.log(e);
+					}
+				});
+				$.ajax({
+					url:url_ym+"wsx_os.php/getProvinces",
+					dataType:'json',
+					type:'get',
+					ContentType:"application/json;charset=utf-8",
+					data:JSON.stringify({
+					}),
+					success:function(msg){
+						vm.province=msg.province;
+					},
+					error:function(xhr){
+						console.log(xhr.responseText);
+					}
+				});
+				$.ajax({
+					url:url_ym+"wsx_os.php/getCitys0",
+					dataType:'json',
+					type:'get',
+					ContentType:"application/json;charset=utf-8",
+					data:JSON.stringify({
+					}),
+					success:function(msg){
+						vm.city1=msg.city;
+						vm.city2=msg.city;
+					},
+					error:function(xhr){
+						console.log(xhr.responseText);
+					}
+				});
+				$.ajax({
+					url:url_ym+"wsx_os.php/getGoodsPackages",
+					dataType:'json',
+					type:'get',
+					ContentType:"application/json;charset=utf-8",
+					data:JSON.stringify({
+					}),
+					success:function(msg){
+						vm.goods_package=msg.goods_package;
+					},
+					error:function(xhr){
+						console.log(xhr.responseText);
+					}
+				});
+			});
+			
+			function info(){
+				$(".nav-item").removeClass("nav-active");
+				$(".view").removeClass("visible");
+				$(".info-view").addClass("visible");
+			}
+			function info_alter(){
+				var phone=$("#info-phone").val();
+				var name=$("#info-name").val();
+				var number=$("#info-number").val();
+				var company=$("#info-company").val();
+				var address=$("#info-address").val();
+				var telephone=$("#info-telephone").val();
+				var email=$("#info-email").val();
+				var passwd=$("#info-passwd").val();
+				var passwd1=$("#info-passwd1").val();
+				var passwd2=$("#info-passwd2").val();
+				if(phone==""||!(/^1[34578]\d{9}$/.test(phone))){
+					$(".prompt-center").text("手机号码格式不正确！");a_show();
+				}else if(name==""){
+					$(".prompt-center").text("姓名未填！");a_show();
+				}else if(number==""||!(/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(number))){
+					$(".prompt-center").text("身份证号格式不正确！");a_show();
+				}else if(telephone!=""&&!(/^0\d{2,3}-?\d{7,8}$/.test(telephone))){
+					$(".prompt-center").text("固定电话格式不正确！");a_show();
+				}else if(email!=""&&!(/^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(email))){
+					$(".prompt-center").text("邮箱格式不正确！");a_show();
+				}else{
+					if(passwd!=""){
+						$.ajax({
+							url:url+"user.php/getUser4?id="+sessionStorage.getItem("user-id")+"&passwd="+passwd,
+							dataType:'json',
+							type:'get',
+							ContentType:"application/json;charset=utf-8",
+							data:JSON.stringify({
+							}),
+							success:function(msg){
+								if(msg.result==0){
+									if(passwd1==""||!(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/.test(passwd1))){
+										$(".prompt-center").text("新密码格式不正确！");a_show();
+									}else if(passwd2==""||!(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/.test(passwd2))){
+										$(".prompt-center").text("确认密码格式不正确！");a_show();
+									}else if(passwd1!=passwd2){
+										$(".prompt-center").text("两次密码不一致！");a_show();
+									}else{
+										$.ajax({
+											url:url+"user.php/alterUser2",
+											dataType:'json',
+											type:'post',
+											ContentType:"application/json;charset=utf-8",
+											data:JSON.stringify({
+												id:sessionStorage.getItem("user-id"),
+												phone:phone,
+												name:name,
+												number:number,
+												company:company,
+												address:address,
+												telephone:telephone,
+												email:email,
+												passwd:passwd1
+											}),
+											success:function(msg){
+												console.log(msg);
+												if(msg.result==0){
+													$("#info-passwd").val("");
+													$("#info-passwd1").val("");
+													$("#info-passwd2").val("");
+													$("#name").text(name);
+													$(".prompt-center").text("修改成功！");a_show();
+												}else{
+													$(".prompt-center").text(msg.desc);a_show();
+												}
+											},
+											error:function(e){
+												console.log(e);
+											}
+										});
+									}
+								}else{
+									$(".prompt-center").text("旧密码不正确！");a_show();
+								}
+							},
+							error:function(e){
+								console.log(e);
+							}
+						});
+					}else{
+						$.ajax({
+							url:url+"user.php/alterUser1",
+							dataType:'json',
+							type:'post',
+							ContentType:"application/json;charset=utf-8",
+							data:JSON.stringify({
+								id:sessionStorage.getItem("user-id"),
+								phone:phone,
+								name:name,
+								number:number,
+								company:company,
+								address:address,
+								telephone:telephone,
+								email:email
+							}),
+							success:function(msg){
+								console.log(msg);
+								if(msg.result==0){
+									$("#info-passwd").val("");
+									$("#info-passwd1").val("");
+									$("#info-passwd2").val("");
+									$("#name").text(name);
+									$(".prompt-center").text("修改成功！");a_show();
+								}else{
+									$(".prompt-center").text(msg.desc);a_show();
+								}
+							},
+							error:function(e){
+								console.log(e);
+							}
+						});
+					}
+				}
+			}
+			
+			function exit(){
+				window.location.href="operate.html";
+			}
+			
+			function navTo(index){
+				$(".info-view").removeClass("visible");
+				$(".nav-item").removeClass("nav-active");
+				$(".nav-item").eq(index).addClass("nav-active");
+				$(".view").removeClass("visible");
+				$(".view").eq(index).addClass("visible");
+			}
+			
+			function hunt1(province_id){
+				$.ajax({
+					url:url_ym+"wsx_os.php/getCitys1?province_id="+province_id,
+					dataType:'json',
+					type:'get',
+					ContentType:"application/json;charset=utf-8",
+					data:JSON.stringify({
+					}),
+					success:function(msg){
+						vm.city1=msg.city;
+					},
+					error:function(xhr){
+						console.log(xhr.responseText);
+					}
+				});
+			}
+			function hunt2(province_id){
+				$.ajax({
+					url:url_ym+"wsx_os.php/getCitys1?province_id="+province_id,
+					dataType:'json',
+					type:'get',
+					ContentType:"application/json;charset=utf-8",
+					data:JSON.stringify({
+					}),
+					success:function(msg){
+						vm.city2=msg.city;
+					},
+					error:function(xhr){
+						console.log(xhr.responseText);
+					}
+				});
+			}
+			function hunt3(city_id){
+				if(city_id==0){
+					$("#consignor-province").val(0);
+				}else{
+					$.ajax({
+						url:url_ym+"wsx_os.php/getCity1?city_id="+city_id,
+						dataType:'json',
+						type:'get',
+						ContentType:"application/json;charset=utf-8",
+						data:JSON.stringify({
+						}),
+						success:function(msg){
+							$("#consignor-province").val(msg.city.pid);
+						},
+						error:function(xhr){
+							console.log(xhr.responseText);
+						}
+					});
+				}
+			}
+			function hunt4(city_id){
+				if(city_id==0){
+					$("#consignee-province").val(0);
+				}else{
+					$.ajax({
+						url:url_ym+"wsx_os.php/getCity1?city_id="+city_id,
+						dataType:'json',
+						type:'get',
+						ContentType:"application/json;charset=utf-8",
+						data:JSON.stringify({
+						}),
+						success:function(msg){
+							$("#consignee-province").val(msg.city.pid);
+						},
+						error:function(xhr){
+							console.log(xhr.responseText);
+						}
+					});
+				}
+			}
+		</script>
+	</body>
+</html>
