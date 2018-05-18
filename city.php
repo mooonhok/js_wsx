@@ -123,13 +123,12 @@ $app->put('/alterUser0',function(Request $request,Response $response){
 
 
 $app->post('/mycurldemo',function(Request $request,Response $response)use($curl){
-//    $app->response->headers->set('Access-Control-Allow-Origin','*');
-//    $app->response->headers->set('Content-Type','application/json');
-//    $database=localhost();
     $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
     $response=$response->withAddedHeader('Content-Type','application/json');
     $url='https://api.uminfo.cn/adminall.php/sign';
-    $header="";
+    $header=array(
+    "application/json"=>"charset=utf-8"
+);
     $array = array(
         "name" =>"admin",
         "password"=>"123456"
@@ -139,6 +138,22 @@ $app->post('/mycurldemo',function(Request $request,Response $response)use($curl)
     return $response->withJson(array("result"=>"1","desc"=>$admin));
 });
 
+
+$app->post('/mycurldemo2',function()use($curl,$app){
+    $app->response->headers->set('Access-Control-Allow-Origin','*');
+    $app->response->headers->set('Content-Type','application/json');
+    $url='https://api.uminfo.cn/adminall.php/sign';
+    $header=array(
+        "application/json"=>"charset=utf-8"
+    );
+    $array = array(
+        "name" =>"admin",
+        "password"=>"123456"
+    );
+    $admin=$curl->postmethod($url,$header,$array);
+//    $city2=$admin['admin']['username'];
+    return $app->response->withJson(array("result"=>"1","desc"=>$admin));
+});
 
 
 
