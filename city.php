@@ -135,8 +135,8 @@ $app->post('/mycurldemo',function(Request $request,Response $response)use($curl)
         "password"=>"123456"
     );
     $admin=$curl->postmethod($url,$header,$array);
-    $city2=$admin['admin']['username'];
-    return $response->withJson(array("result"=>"1","desc"=>$city2));
+//    $city2=$admin['admin']['username'];
+    return $response->withJson(array("result"=>"1","desc"=>$admin));
 });
 
 
