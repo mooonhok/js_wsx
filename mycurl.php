@@ -11,6 +11,10 @@ class mycurl
     public $url;//请求路径
     public $data;//请求数据
    public  $header;//请求头
+
+    public function changdata($data){
+        return urldecode(json_encode($data));
+    }
     //使用CURL发送HTTP的典型过程
     public function gethttpl($url){
         $ch = curl_init();
@@ -49,7 +53,7 @@ class mycurl
 
     //post方法
     public function postmethod($url,$header,$data){
-        $postJson = urldecode( json_encode( $data ) );
+        $postJson = $this->changdata($data);
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
@@ -73,7 +77,7 @@ class mycurl
 
     //put方法
     public function putmethod($url,$header,$data){
-        $postJson = urldecode( json_encode( $data ) );
+        $postJson = $this->changdata($data);
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL,$url); //定义请求地址
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "put"); //定义请求类型，当然那个提交类型那一句就不需要了
