@@ -11,58 +11,6 @@ use Slim\PDO\Statement\SelectStatement;
 $app = new Slim\App();
 $curl=new mycurl();
 
-$app->get('/province',function(Request $request,Response $response){
-//    $app->response->headers->set('Access-Control-Allow-Origin','*');
-//    $app->response->headers->set('Content-Type','application/json');
-    $database=localhost();
-    $selectStatement = $database->select()
-        ->from('province');
-    $stmt = $selectStatement->execute();
-    $data = $stmt->fetchAll();
-    echo  json_encode(array("result"=>"0","desc"=>"success","province"=>$data));
-});
-
-$app->get('/city',function(Request $request,Response $response){
-//    $app->response->headers->set('Access-Control-Allow-Origin','*');
-//    $app->response->headers->set('Content-Type','application/json');
-    $database=localhost();
-    $pid=$request->getParam('pid');
-    if($pid!=null||$pid!=""){
-        $selectStatement = $database->select()
-            ->from('city')
-            ->where('pid','=',$pid);
-        $stmt = $selectStatement->execute();
-        $data = $stmt->fetchAll();
-        echo  json_encode(array("result"=>"0","desc"=>"success","province"=>$data,"pid"=>$pid));
-    }else{
-//        $uri = $request->getServerParams('pid');
-        echo  json_encode(array("result"=>"0","desc"=>"lose pid".$pid));
-    }
-});
-
-
-$app->post('/citybyp',function(Request $request,Response $response){
-//    $app->response->headers->set('Access-Control-Allow-Origin','*');
-//    $app->response->headers->set('Content-Type','application/json');
-    $database=localhost();
-    $body = $request->getBody();
-    $body=json_decode($body);
-    $pid=$body->pid;
-    if($pid!=null||$pid!=""){
-        $selectStatement = $database->select()
-            ->from('city')
-            ->where('pid','=',$pid);
-        $stmt = $selectStatement->execute();
-        $data = $stmt->fetchAll();
-        echo  json_encode(array("result"=>"0","desc"=>"success","province"=>$data,"pid"=>$pid));
-    }else{
-//        $uri = $request->getServerParams('pid');
-        echo  json_encode(array("result"=>"0","desc"=>"lose pid".$pid));
-    }
-});
-
-
-
 $app->post('/getvaluedemo',function(Request $request,Response $response){
 //    $app->response->headers->set('Access-Control-Allow-Origin','*');
 //    $app->response->headers->set('Content-Type','application/json');
