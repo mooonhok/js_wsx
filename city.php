@@ -1,7 +1,7 @@
 <?php
 require 'vendor/autoload.php';
 require 'connect.php';
-
+require 'mycurl.php';
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
@@ -9,6 +9,7 @@ use Slim\PDO\Database;
 use Slim\PDO\Statement;
 use Slim\PDO\Statement\SelectStatement;
 $app = new Slim\App();
+$curl=new mycurl();
 
 $app->get('/province',function(Request $request,Response $response){
 //    $app->response->headers->set('Access-Control-Allow-Origin','*');
@@ -118,6 +119,28 @@ $app->put('/alterUser0',function(Request $request,Response $response){
         return $response->withJson(array("result"=>"1","desc"=>"缺少id"));
     }
 });
+
+
+
+$app->post('/mycurldemo',function(Request $request,Response $response)use($curl){
+//    $app->response->headers->set('Access-Control-Allow-Origin','*');
+//    $app->response->headers->set('Content-Type','application/json');
+//    $database=localhost();
+    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response=$response->withAddedHeader('Content-Type','application/json');
+    $url='https://api.uminfo.cn/adminall.php/sign';
+    $header="";
+    $array = array(
+        "name" =>"admin",
+        "password"=>"123456"
+    );
+    $admin=$curl->postmethod($url,$header,$array);
+    $city2=$admin['admin']['username'];
+    return $response->withJson(array("result"=>"1","desc"=>$city2));
+});
+
+
+
 
 $app->run();
 
