@@ -97,6 +97,28 @@ class mycurl
         curl_close($curl);
     }
 
+    //delete方法
+    public function deletemethod($url,$header,$data){
+        $postJson = $this->changdata($data);
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL,$url); //定义请求地址
+        curl_setopt ($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+        curl_setopt($curl, CURLOPT_HEADER,0); //定义是否显示状态头 1：显示 ； 0：不显示
+        if($header!=null||$header!="") {
+            curl_setopt($curl, CURLOPT_HEADER, 0); //定义是否显示状态头 1：显示 ； 0：不显示
+            curl_setopt($curl, CURLOPT_HTTPHEADER, $header);//定义header
+        }
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $postJson); //定义提交的数据
+        $output = curl_exec($curl);
+        if($output === FALSE ){
+            return curl_error($curl);
+        }else{
+            $jsoninfo=json_decode($output,true);
+            return $jsoninfo;
+        }
+        curl_close($curl);
+    }
+
 
 }
 ?>
