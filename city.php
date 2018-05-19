@@ -73,17 +73,57 @@ $app->put('/alterUser0',function(Request $request,Response $response){
 $app->post('/mycurldemo',function(Request $request,Response $response)use($curl){
     $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
     $response=$response->withAddedHeader('Content-Type','application/json');
-    $url='https://api.uminfo.cn/adminall.php/sign';
-    $header=array(
-    "application/json"=>"charset=utf-8"
-);
-    $array = array(
-        "name"=>"admin",
-        "password"=>"123456"
-    );
-    $admin=$curl->postmethod($url,$header,$array);
-    $city2=$admin['admin']['username'];
-    return $response->withJson(array("result"=>"1","desc"=>$city2));
+    $body = $request->getBody();
+    $body=json_decode($body);
+    $url=$body->url;//获取body中数据
+    $type=$body->type;
+    $array=array();
+    if($body!=null){
+    foreach($body as $key=>$value){
+        if($key!="url"&&$key!="type"){
+            $array[$key]=$value;
+        }
+    }
+    }
+    $array1=array();
+    $header=$request->getHeaders();
+    if($header!=null){
+    foreach($header as $key=>$value){
+        $array1[$key]=$value;
+    }
+    }
+    if($type!=null||$type!="") {
+        if ($type == 0) {
+            $re = $curl->gethttpl($url);//获取html文字
+            return $response->withJson($re);
+        } else if ($type == 1) {
+            $re = $curl->getmethod($url, $array1);
+            return $response->withJson($re);
+        } else if ($type == 2) {
+            $re = $curl->postmethod($url, $array1, $array);
+            return $response->withJson($re);
+        } else if ($type == 3) {
+            $re = $curl->putmethod($url, $array1, $array);
+            return $response->withJson($re);
+        } else if ($type == 4) {
+            $re = $curl->deletemethod($url, $array1, $array);
+            return $response->withJson($re);
+        }
+    }else{
+        return $response->withJson(array('desc'=>"缺少请求类型"));
+    }
+
+//    $url='https://api.uminfo.cn/adminall.php/sign';
+//    $header=array(
+//    "application/json"=>"charset=utf-8"
+//);
+//    $array = array(
+//        "name"=>"admin",
+//        "password"=>"123456"
+//    );
+//    $admin=$curl->postmethod($url,$header,$array);
+//    $city2=$admin['admin']['username'];
+//    return $response->withJson(array("result"=>"1","desc"=>$city2));
 });
 
 
