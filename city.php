@@ -73,21 +73,17 @@ $app->put('/alterUser0',function(Request $request,Response $response){
 $app->post('/mycurldemo',function(Request $request,Response $response)use($curl){
     $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
     $response=$response->withAddedHeader('Content-Type','application/json');
-    $url='https://123.207.144.43/city.php/test';
+    $url='https://api.uminfo.cn/adminall.php/sign';
     $header=array(
     "application/json"=>"charset=utf-8"
 );
-    $array = array();
+    $array = array(
+        "name"=>"adminall",
+        "password"=>"123456"
+    );
     $admin=$curl->deletemethod($url,$header,$array);
 //    $city2=$admin['admin']['username'];
     return $response->withJson(array("result"=>"1","desc"=>$admin));
-});
-
-$app->delete('/test',function(Request $request,Response $response){
-    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
-    $response=$response->withAddedHeader('Content-Type','application/json');
-
-    return $response->withJson(array("result"=>"1","desc"=>'success'));
 });
 
 
