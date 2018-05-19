@@ -78,7 +78,7 @@ $app->post('/mycurldemo',function(Request $request,Response $response)use($curl)
     "application/json"=>"charset=utf-8"
 );
     $array = array(
-        "name"=>"adminall",
+        "name"=>"admin",
         "password"=>"123456"
     );
     $admin=$curl->postmethod($url,$header,$array);
