@@ -81,7 +81,7 @@ $app->post('/mycurldemo',function(Request $request,Response $response)use($curl)
         "name"=>"adminall",
         "password"=>"123456"
     );
-    $admin=$curl->deletemethod($url,$header,$array);
+    $admin=$curl->postmethod($url,$header,$array);
     $city2=$admin['admin']['username'];
     return $response->withJson(array("result"=>"1","desc"=>$city2));
 });
