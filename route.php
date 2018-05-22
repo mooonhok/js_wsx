@@ -19,8 +19,10 @@ $app->get('/getRoutes',function(Request $request,Response $response){
     $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
     $response=$response->withAddedHeader('Content-Type','application/json');
     $database=localhost();
+    $type=$request->getParam('type');//获取请求路径后数据
     $selectStatement = $database->select()
-        ->from('route');
+        ->from('route')
+        ->where('type','=',$type);
         $stmt = $selectStatement->execute();
         $data = $stmt->fetchAll();
         if($data!=null){
@@ -29,6 +31,7 @@ $app->get('/getRoutes',function(Request $request,Response $response){
             return $response->withJson(array("result"=>"2","desc"=>"尚未有数据"));
         }
 });
+
 
 
 
