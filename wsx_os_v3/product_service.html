@@ -1,0 +1,83 @@
+<html>
+	<head>
+        <title>靖江市万事鑫</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		<link type="text/css" href="css/common.css" rel="stylesheet">
+		<link rel="shortcut icon" href="favicon.ico" />
+		<style>
+		</style>
+	</head>
+	<body>
+		<div class="nav">
+			<div class="detail">
+				<div class="logo" onclick="window.location.href='index.html'">
+					<img id="logo" src="images/logo.png" />
+				</div>
+				<div class="nav-items">
+					<div class="nav-item" onclick="navTo(0)" onmouseover="navOver(0)" onmouseout="navOut(0)">首页</div>
+					<div class="nav-item nav-active" onclick="navTo(1)" onmouseover="navOver(1)" onmouseout="navOut(1)">产品与服务</div>
+					<div class="nav-item" onclick="navTo(2)" onmouseover="navOver(2)" onmouseout="navOut(2)">查询与跟踪</div>
+					<div class="nav-item" onclick="navTo(3)" onmouseover="navOver(3)" onmouseout="navOut(3)">线上营运中心</div>
+					<div class="nav-item" onclick="navTo(4)" onmouseover="navOver(4)" onmouseout="navOut(4)">整车配载中心</div>
+					<div class="nav-item" onclick="navTo(5)" onmouseover="navOver(5)" onmouseout="navOut(5)">关于万事鑫</div>
+				</div>
+			</div>
+		</div>
+		<div class="subnav">
+			<div class="detail">
+				<div class="subnav-items" onmouseenter="subnavEnter(1)" onmouseleave="subnavLeave()">
+					<div class="subnav-item" onclick="subnavTo(0)">产品介绍</div>
+					<div class="subnav-item" onclick="subnavTo(1)">增值服务</div>
+					<div class="subnav-item" onclick="subnavTo(2)">业务范围</div>
+					<div class="subnav-item" onclick="subnavTo(3)">服务承诺</div>
+					<div class="subnav-item" onclick="subnavTo(4)">禁运品</div>
+				</div>
+				<div class="subnav-items" onmouseenter="subnavEnter(2)" onmouseleave="subnavLeave()">
+					<div class="subnav-item" onclick="subnavTo(5)">运单查询</div>
+					<div class="subnav-item" onclick="subnavTo(6)">运价查询</div>
+					<div class="subnav-item" onclick="subnavTo(7)">部门查询</div>
+				</div>
+				<div class="subnav-items" onmouseenter="subnavEnter(5)" onmouseleave="subnavLeave()">
+					<div class="subnav-item" onclick="subnavTo(8)">公司简介</div>
+					<div class="subnav-item" onclick="subnavTo(9)">联系我们</div>
+					<div class="subnav-item" onclick="subnavTo(10)">加盟合作</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="detail">
+				<div class="footer-content footer-logo">
+					<img src="images/logo2.png" />
+				</div>
+				<div class="footer-content footer-contact">
+					<div class="footer-title">联系我们</div>
+					<div class="footer-contact-div"><img src="images/time.png" />工作时间： 8:00 AM - 22:00PM</div>
+					<div class="footer-contact-div"><img src="images/phone.png" />0523-84862770</div>
+					<div class="footer-contact-div"><img src="images/email.png" />wanshixin2004@163.com</div>
+					<div class="footer-contact-div"><img src="images/address.png" />江苏省靖江市南环路76号联运大厦</div>
+				</div>
+				<div class="footer-content footer-scan">
+					<div class="footer-title">关注或下载</div>
+					<div class="footer-qrcode">
+						<img id="qrcode" src="images/qrcode.jpg" />
+						<div class="footer-scan-tip">官方微信公众号</div>
+					</div>
+					<div class="footer-app">
+						<img id="app" src="images/app.png" />
+						<div class="footer-scan-tip">交付帮手APP</div>
+					</div>
+				</div>
+				<div class="footer-copyright">Copyright &copy; 2018 靖江市万事鑫联运服务有限公司. All rights reserved.<a target="_blank" href="#"></a></div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script>
+			var url="http://123.207.144.43/";
+			
+			$(document).ready(function(){
+				sessionStorage.setItem("aindex",1);
+			});
+		</script>
+	</body>
+</html>

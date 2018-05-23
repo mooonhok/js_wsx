@@ -6,7 +6,7 @@ $(document).ready(function(){
 
 function navOver(index){
 	$(".nav-item").removeClass("nav-active");
-	$(".nav-item").eq(parseInt(sessionStorage.getItem('aindex'))).addClass("nav-active");
+	$(".nav-item").eq(parseInt(sessionStorage.getItem("aindex"))).addClass("nav-active");
 	$(".subnav-items").css("display","none");
 	if(index==1||index==2||index==5){
 		$(".subnav").css("display","block");
@@ -31,9 +31,12 @@ function navOut(index){
 	}
 }
 function navTo(index){
-	sessionStorage.setItem('operate-index',0);
+	sessionStorage.setItem("operate-index",0);
 	if(index==0){
 		window.location.href="index.html";
+	}
+	if(index==1){
+		window.location.href="product_service.html";
 	}
 	if(index==3){
 		window.location.href="operate.html";
@@ -42,12 +45,12 @@ function navTo(index){
 
 function subnavEnter(index){
 	$(".nav-item").removeClass("nav-active");
-	$(".nav-item").eq(parseInt(sessionStorage.getItem('aindex'))).addClass("nav-active");
+	$(".nav-item").eq(parseInt(sessionStorage.getItem("aindex"))).addClass("nav-active");
 	$(".nav-item").eq(index).addClass("nav-active");
 }
 function subnavLeave(){
 	$(".nav-item").removeClass("nav-active");
-	$(".nav-item").eq(parseInt(sessionStorage.getItem('aindex'))).addClass("nav-active");
+	$(".nav-item").eq(parseInt(sessionStorage.getItem("aindex"))).addClass("nav-active");
 	$(".subnav").css("display","none");
 }
 function subnavTo(index){
