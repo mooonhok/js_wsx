@@ -130,8 +130,7 @@
 					<div class="nav-item" onclick="navTo(1)" onmouseover="navOver(1)" onmouseout="navOut(1)">产品与服务</div>
 					<div class="nav-item" onclick="navTo(2)" onmouseover="navOver(2)" onmouseout="navOut(2)">查询与跟踪</div>
 					<div class="nav-item nav-active" onclick="navTo(3)" onmouseover="navOver(3)" onmouseout="navOut(3)">线上营运中心</div>
-					<div class="nav-item" onclick="navTo(4)" onmouseover="navOver(4)" onmouseout="navOut(4)">整车配载中心</div>
-					<div class="nav-item" onclick="navTo(5)" onmouseover="navOver(5)" onmouseout="navOut(5)">关于万事鑫</div>
+					<div class="nav-item" onclick="navTo(4)" onmouseover="navOver(4)" onmouseout="navOut(4)">关于万事鑫</div>
 				</div>
 			</div>
 		</div>
@@ -292,10 +291,10 @@
 			
 			$(document).ready(function(){
 				sessionStorage.setItem("aindex",3);
-				if(sessionStorage.getItem("operate-index")==1){
+				if(sessionStorage.getItem("oindex")==1){
 					$("#login-view").css("display","none");
 					$("#register-view").css("display","block");
-				}else if(sessionStorage.getItem("operate-index")==2){
+				}else if(sessionStorage.getItem("oindex")==2){
 					$("#login-view").css("display","none");
 					$("#forget-view").css("display","block");
 				}else{
