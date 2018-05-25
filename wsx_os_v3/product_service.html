@@ -1,115 +1,9 @@
 <html>
 	<head>
-        <title>靖江市万事鑫</title>
+        <title>靖江市万事鑫联运</title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 		<link type="text/css" href="css/common.css" rel="stylesheet">
 		<link rel="shortcut icon" href="favicon.ico" />
-		<style>
-			.bg-view{
-				width:100%;
-				height:180px;
-				background:url("images/ps-banner.jpg") center center no-repeat;
-			}
-			.intro-view{
-				padding:40px 0;
-			}
-			.intro-left{
-				display:inline-block;
-				width:240px;
-				height:auto;
-				background:#ffffff;
-				margin-right:40px;
-				vertical-align:top;
-			}
-			.intro-right{
-				display:inline-block;
-				width:920px;
-				height:auto;
-				background:#ffffff;
-				vertical-align:top;
-			}
-			.intro-title{
-				width:240px;
-				height:60px;
-				font-size:24px;
-				line-height:60px;
-				background:#1596fa;
-				color:#ffffff;
-				text-align:center;
-				float:left;
-			}
-			.intro-subtitle{
-				width:210px;
-				height:40px;
-				font-size:17px;
-				line-height:40px;
-				padding-left:30px;
-				border-bottom:1px solid #eeeeee;
-				float:left;
-				cursor:pointer;
-			}
-			.intro-smalltitle{
-				width:190px;
-				padding:8px 0px 8px 50px;
-				border-bottom:1px solid #eeeeee;
-				float:left;
-			}
-			.smalltitle-item{
-				width:190px;
-				height:34px;
-				font-size:15px;
-				line-height:36px;
-				float:left;
-				cursor:pointer;
-			}
-			.intro-subtitle:hover,.smalltitle-item:hover{
-				color:#1596fa;
-			}
-			.subtitle-active{
-				color:#1596fa;
-				background:url(images/arrow.png) no-repeat 190px 13px;
-			}
-			.smalltitle-active{
-				color:#1596fa;
-				background:url(images/arrow.png) no-repeat 140px 11px;
-			}
-			.smalltitle-view,.subtitle-view{
-				display:none;
-				padding:36px 40px;
-			}
-			.titleview-visible{
-				display:block;
-			}
-			.desc-title{
-				width:100%;
-				height:54px;
-				font-size:24px;
-				text-align:center;
-				float:left;
-			}
-			.desc-text,.desc-img{
-				float:left;
-			}
-			.desc-text div{
-				font-size:16px;
-				line-height:28px;
-			}
-			.desc-para{
-				margin-bottom:40px;
-			}
-			.desc-abstract{
-				font-size:16px;
-				font-weight:bold;
-				color:#1596fa;
-			}
-			.desc-img img{
-				width:840px;
-				margin-bottom:30px;
-			}
-			.desc-indent{
-				text-indent:32px;
-			}
-		</style>
 	</head>
 	<body>
 		<div class="nav">
@@ -119,10 +13,9 @@
 				</div>
 				<div class="nav-items">
 					<div class="nav-item" onclick="navTo(0)" onmouseover="navOver(0)" onmouseout="navOut(0)">首页</div>
-					<div class="nav-item nav-active" onclick="navTo(1)" onmouseover="navOver(1)" onmouseout="navOut(1)">产品与服务</div>
-					<div class="nav-item" onclick="navTo(2)" onmouseover="navOver(2)" onmouseout="navOut(2)">查询与跟踪</div>
-					<div class="nav-item" onclick="navTo(3)" onmouseover="navOver(3)" onmouseout="navOut(3)">线上营运中心</div>
-					<div class="nav-item" onclick="navTo(4)" onmouseover="navOver(4)" onmouseout="navOut(4)">关于万事鑫</div>
+					<div class="nav-item" onclick="navTo(1)" onmouseover="navOver(1)" onmouseout="navOut(1)">产品与服务</div>
+					<div class="nav-item" onclick="navTo(2)" onmouseover="navOver(2)" onmouseout="navOut(2)">线上营运中心</div>
+					<div class="nav-item" onclick="navTo(3)" onmouseover="navOver(3)" onmouseout="navOut(3)">关于万事鑫</div>
 				</div>
 			</div>
 		</div>
@@ -131,19 +24,13 @@
 				<div class="subnav-items" onmouseenter="subnavEnter(1)" onmouseleave="subnavLeave()">
 					<div class="subnav-item" onclick="subnavTo(0)">产品介绍</div>
 					<div class="subnav-item" onclick="subnavTo(1)">增值服务</div>
-					<div class="subnav-item" onclick="subnavTo(2)">业务范围</div>
-					<div class="subnav-item" onclick="subnavTo(3)">服务承诺</div>
-					<div class="subnav-item" onclick="subnavTo(4)">禁运品</div>
+					<div class="subnav-item" onclick="subnavTo(2)">禁运品</div>
 				</div>
-				<div class="subnav-items" onmouseenter="subnavEnter(2)" onmouseleave="subnavLeave()">
-					<div class="subnav-item" onclick="subnavTo(5)">运单查询</div>
-					<div class="subnav-item" onclick="subnavTo(6)">运价查询</div>
-					<div class="subnav-item" onclick="subnavTo(7)">部门查询</div>
-				</div>
-				<div class="subnav-items" onmouseenter="subnavEnter(5)" onmouseleave="subnavLeave()">
-					<div class="subnav-item" onclick="subnavTo(8)">公司简介</div>
-					<div class="subnav-item" onclick="subnavTo(9)">联系我们</div>
-					<div class="subnav-item" onclick="subnavTo(10)">加盟合作</div>
+				<div class="subnav-items" onmouseenter="subnavEnter(3)" onmouseleave="subnavLeave()">
+					<div class="subnav-item" onclick="subnavTo(3)">公司简介</div>
+					<div class="subnav-item" onclick="subnavTo(4)">业务部门</div>
+					<div class="subnav-item" onclick="subnavTo(5)">联系我们</div>
+					<div class="subnav-item" onclick="subnavTo(6)">加盟合作</div>
 				</div>
 			</div>
 		</div>
@@ -154,7 +41,7 @@
 					<div class="intro-title">产品与服务</div>
 					<div class="intro-subtitle">产品介绍</div>
 					<div class="intro-smalltitle">
-						<div class="smalltitle-item smalltitle-active" onclick="smalltitleTo(0)">公铁联运</div>
+						<div class="smalltitle-item" onclick="smalltitleTo(0)">公铁联运</div>
 						<div class="smalltitle-item" onclick="smalltitleTo(1)">公路零担</div>
 						<div class="smalltitle-item" onclick="smalltitleTo(2)">公路配载</div>
 						<div class="smalltitle-item" onclick="smalltitleTo(3)">大件运输</div>
@@ -166,12 +53,16 @@
 						<div class="smalltitle-item" onclick="smalltitleTo(6)">送货上门</div>
 						<div class="smalltitle-item" onclick="smalltitleTo(7)">包装服务</div>
 					</div>
-					<div class="intro-subtitle" onclick="subtitleTo(2)">业务部门</div>
-					<div class="intro-subtitle" onclick="subtitleTo(3)">禁运品</div>
+					<div class="intro-subtitle" onclick="subtitleTo(2)">禁运品</div>
+					<div class="intro-">
+					</div>
 				</div>
 				<div class="intro-right">
-					<div class="smalltitle-view titleview-visible">
+					<div class="smalltitle-view">
 						<div class="desc-title">公铁联运</div>
+						<div class="desc-img">
+							<img src="images/ps-banner0.jpg">
+						</div>
 						<div class="desc-text">
 							<div class="desc-para">
 								<div><span class="desc-abstract">产品介绍：</span></div>
@@ -206,6 +97,9 @@
 					</div>
 					<div class="smalltitle-view">
 						<div class="desc-title">公路配载</div>
+						<div class="desc-img">
+							<img src="images/ps-banner2.jpg">
+						</div>
 						<div class="desc-text">
 							<div class="desc-para">
 								<div><span class="desc-abstract">产品介绍：</span></div>
@@ -221,6 +115,9 @@
 					</div>
 					<div class="smalltitle-view">
 						<div class="desc-title">大件运输</div>
+						<div class="desc-img">
+							<img src="images/ps-banner3.jpg">
+						</div>
 						<div class="desc-text">
 							<div class="desc-para">
 								<div><span class="desc-abstract">产品介绍：</span></div>
@@ -230,6 +127,9 @@
 					</div>
 					<div class="smalltitle-view">
 						<div class="desc-title">货物保险</div>
+						<div class="desc-img">
+							<img src="images/ps-banner4.jpg">
+						</div>
 						<div class="desc-text">
 							<div class="desc-para">
 								<div><span class="desc-abstract">服务描述：</span></div>
@@ -243,19 +143,25 @@
 					</div>
 					<div class="smalltitle-view">
 						<div class="desc-title">上门提货</div>
+						<div class="desc-img">
+							<img src="images/ps-banner5.jpg">
+						</div>
 					</div>
 					<div class="smalltitle-view">
 						<div class="desc-title">送货上门</div>
+						<div class="desc-img">
+							<img src="images/ps-banner6.jpg">
+						</div>
 					</div>
 					<div class="smalltitle-view">
 						<div class="desc-title">包装服务</div>
+						<div class="desc-img">
+							<img src="images/ps-banner7.jpg">
+						</div>
 					</div>
 					<div class="subtitle-view">
 					</div>
 					<div class="subtitle-view">
-					</div>
-					<div class="subtitle-view">
-						<div class="desc-title">业务部门</div>
 					</div>
 					<div class="subtitle-view">
 						<div class="desc-title">禁运品</div>
@@ -322,13 +228,25 @@
 		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="js/common.js"></script>
 		<script>
-			var url="http://123.207.144.43/";
-			
 			$(document).ready(function(){
 				sessionStorage.setItem("aindex",1);
+				$(".nav-item").removeClass("nav-active");
+				$(".nav-item").eq(1).addClass("nav-active");
+				$(".smalltitle-item").removeClass("smalltitle-active");
+				$(".intro-subtitle").removeClass("subtitle-active");
+				$(".smalltitle-view").removeClass("titleview-visible");
+				$(".subtitle-view").removeClass("titleview-visible");
+				if(sessionStorage.getItem("psindex")==8){
+					$(".intro-subtitle").eq(sessionStorage.getItem("psindex")-6).addClass("subtitle-active");
+					$(".subtitle-view").eq(sessionStorage.getItem("psindex")-6).addClass("titleview-visible");
+				}else{
+					$(".smalltitle-item").eq(sessionStorage.getItem("psindex")).addClass("smalltitle-active");
+					$(".smalltitle-view").eq(sessionStorage.getItem("psindex")).addClass("titleview-visible");
+				}
 			});
 			
 			function smalltitleTo(index){
+				sessionStorage.setItem("psindex",index);
 				$(".smalltitle-item").removeClass("smalltitle-active");
 				$(".intro-subtitle").removeClass("subtitle-active");
 				$(".smalltitle-item").eq(index).addClass("smalltitle-active");
@@ -338,6 +256,7 @@
 			}
 			
 			function subtitleTo(index){
+				sessionStorage.setItem("psindex",index+6);
 				$(".smalltitle-item").removeClass("smalltitle-active");
 				$(".intro-subtitle").removeClass("subtitle-active");
 				$(".intro-subtitle").eq(index).addClass("subtitle-active");

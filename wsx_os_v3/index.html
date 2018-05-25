@@ -1,6 +1,6 @@
 <html>
 	<head>
-        <title>靖江市万事鑫</title>
+        <title>靖江市万事鑫联运</title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 		<link type="text/css" href="css/common.css" rel="stylesheet">
 		<link type="text/css" href="css/banner.css" rel="stylesheet">
@@ -294,11 +294,10 @@
 					<img id="logo" src="images/logo.png" />
 				</div>
 				<div class="nav-items">
-					<div class="nav-item nav-active" onclick="navTo(0)" onmouseover="navOver(0)" onmouseout="navOut(0)">首页</div>
+					<div class="nav-item" onclick="navTo(0)" onmouseover="navOver(0)" onmouseout="navOut(0)">首页</div>
 					<div class="nav-item" onclick="navTo(1)" onmouseover="navOver(1)" onmouseout="navOut(1)">产品与服务</div>
-					<div class="nav-item" onclick="navTo(2)" onmouseover="navOver(2)" onmouseout="navOut(2)">查询与跟踪</div>
-					<div class="nav-item" onclick="navTo(3)" onmouseover="navOver(3)" onmouseout="navOut(3)">线上营运中心</div>
-					<div class="nav-item" onclick="navTo(4)" onmouseover="navOver(4)" onmouseout="navOut(4)">关于万事鑫</div>
+					<div class="nav-item" onclick="navTo(2)" onmouseover="navOver(2)" onmouseout="navOut(2)">线上营运中心</div>
+					<div class="nav-item" onclick="navTo(3)" onmouseover="navOver(3)" onmouseout="navOut(3)">关于万事鑫</div>
 				</div>
 			</div>
 		</div>
@@ -307,19 +306,13 @@
 				<div class="subnav-items" onmouseenter="subnavEnter(1)" onmouseleave="subnavLeave()">
 					<div class="subnav-item" onclick="subnavTo(0)">产品介绍</div>
 					<div class="subnav-item" onclick="subnavTo(1)">增值服务</div>
-					<div class="subnav-item" onclick="subnavTo(2)">业务范围</div>
-					<div class="subnav-item" onclick="subnavTo(3)">服务承诺</div>
-					<div class="subnav-item" onclick="subnavTo(4)">禁运品</div>
+					<div class="subnav-item" onclick="subnavTo(2)">禁运品</div>
 				</div>
-				<div class="subnav-items" onmouseenter="subnavEnter(2)" onmouseleave="subnavLeave()">
-					<div class="subnav-item" onclick="subnavTo(5)">运单查询</div>
-					<div class="subnav-item" onclick="subnavTo(6)">运价查询</div>
-					<div class="subnav-item" onclick="subnavTo(7)">部门查询</div>
-				</div>
-				<div class="subnav-items" onmouseenter="subnavEnter(5)" onmouseleave="subnavLeave()">
-					<div class="subnav-item" onclick="subnavTo(8)">公司简介</div>
-					<div class="subnav-item" onclick="subnavTo(9)">联系我们</div>
-					<div class="subnav-item" onclick="subnavTo(10)">加盟合作</div>
+				<div class="subnav-items" onmouseenter="subnavEnter(3)" onmouseleave="subnavLeave()">
+					<div class="subnav-item" onclick="subnavTo(3)">公司简介</div>
+					<div class="subnav-item" onclick="subnavTo(4)">业务部门</div>
+					<div class="subnav-item" onclick="subnavTo(5)">联系我们</div>
+					<div class="subnav-item" onclick="subnavTo(6)">加盟合作</div>
 				</div>
 			</div>
 		</div>
@@ -380,7 +373,6 @@
 						<div class="view1-left-tab">
 							<div class="view1-left-tab-item view1-left-tab-active" onmouseover="view1LeftTabOver(0)"><img src="images/query0-active.png" />登录注册</div>
 							<div class="view1-left-tab-item" onmouseover="view1LeftTabOver(1)"><img src="images/query1.png" />运单查询</div>
-							<div class="view1-left-tab-item" onmouseover="view1LeftTabOver(2)"><img src="images/query2.png" />运价查询</div>
 						</div>
 						<div class="view1-left-content visible">
 							<input id="user-phone" type="text" placeholder="请输入手机号" />
@@ -397,10 +389,7 @@
 						</div>
 						<div class="view1-left-content">
 							<input id="order-id" type="text" placeholder="请输入运单号进行查询" />
-							<input id="order-query" type="button" value="查询" />
-						</div>
-						<div class="view1-left-content">
-							运价查询
+							<input id="order-query" type="button" value="查询" onclick="order_query()" />
 						</div>
 					</div>
 				</div>
@@ -408,40 +397,40 @@
 					<div class="view1-right-view">
 						<div class="view1-right-title">
 							<span id="ps-title">产品与服务</span>
-							<span id="ps-more">更多>></span>
+							<span id="ps-more" onclick="view1RightContentTo(0)">更多>></span>
 						</div>
 						<div class="view1-right-content">
-							<div class="view1-right-content-item" onmouseover="view1RightContentOver(0)" onmouseout="view1RightContentOut()">
+							<div class="view1-right-content-item" onclick="view1RightContentTo(0)" onmouseover="view1RightContentOver(0)" onmouseout="view1RightContentOut()">
 								<img src="images/ps0.png" />
 								<span>公铁联运</span>
 							</div>
-							<div class="view1-right-content-item" onmouseover="view1RightContentOver(1)" onmouseout="view1RightContentOut()">
+							<div class="view1-right-content-item" onclick="view1RightContentTo(1)" onmouseover="view1RightContentOver(1)" onmouseout="view1RightContentOut()">
 								<img src="images/ps1.png" />
 								<span>公路零担</span>
 							</div>
-							<div class="view1-right-content-item" onmouseover="view1RightContentOver(2)" onmouseout="view1RightContentOut()">
+							<div class="view1-right-content-item" onclick="view1RightContentTo(2)" onmouseover="view1RightContentOver(2)" onmouseout="view1RightContentOut()">
 								<img src="images/ps2.png" />
 								<span>公路配载</span>
 							</div>
-							<div class="view1-right-content-item" onmouseover="view1RightContentOver(3)" onmouseout="view1RightContentOut()">
+							<div class="view1-right-content-item" onclick="view1RightContentTo(3)" onmouseover="view1RightContentOver(3)" onmouseout="view1RightContentOut()">
 								<img src="images/ps3.png" />
 								<span>大件运输</span>
 							</div>
-							<div class="view1-right-content-item" onmouseover="view1RightContentOver(4)" onmouseout="view1RightContentOut()">
+							<div class="view1-right-content-item" onclick="view1RightContentTo(4)" onmouseover="view1RightContentOver(4)" onmouseout="view1RightContentOut()">
 								<img src="images/ps4.png" />
 								<span>货物保险</span>
 							</div>
-							<div class="view1-right-content-item" onmouseover="view1RightContentOver(5)" onmouseout="view1RightContentOut()">
+							<div class="view1-right-content-item" onclick="view1RightContentTo(5)" onmouseover="view1RightContentOver(5)" onmouseout="view1RightContentOut()">
 								<img src="images/ps5.png" />
 								<span>上门提货</span>
 							</div>
-							<div class="view1-right-content-item" onmouseover="view1RightContentOver(6)" onmouseout="view1RightContentOut()">
+							<div class="view1-right-content-item" onclick="view1RightContentTo(6)" onmouseover="view1RightContentOver(6)" onmouseout="view1RightContentOut()">
 								<img src="images/ps6.png" />
 								<span>送货上门</span>
 							</div>
-							<div class="view1-right-content-item" onmouseover="view1RightContentOver(7)" onmouseout="view1RightContentOut()">
+							<div class="view1-right-content-item" onclick="view1RightContentTo(7)" onmouseover="view1RightContentOver(7)" onmouseout="view1RightContentOut()">
 								<img src="images/ps7.png" />
-								<span>业务部门</span>
+								<span>包装服务</span>
 							</div>
 						</div>
 					</div>
@@ -479,7 +468,29 @@
 				<div class="view2-content">
 					<table cellpadding="0" cellspacing="0" frame="void" rules="all">
 						<tr>
-							<td class="table-title" colspan="8">公路专线</td>
+							<td class="table-title" colspan="7">铁路直达快线</td>
+						</tr>
+						<tr>
+							<th colspan="2">线路</th>
+							<th>服务品牌</th>
+							<th>参考时间</th>
+							<th>单价（重货）</th>
+							<th>单价（轻货）</th>
+							<th>操作</th>
+						</tr>
+						<tr v-for="item in route2">
+							<td width="10%" v-if="item.num!=0" rowspan="{{item.num}}">{{item.province}}</td>
+							<td width="20%">{{item.line}}</td>
+							<td width="14%">{{item.brand}}</td>
+							<td width="14%">{{item.time}}</td>
+							<td width="14%">{{item.price_heavy}}</td>
+							<td width="14%">{{item.price_light}}</td>
+							<td width="14%"><input type="button" value="下单" onclick="order()" /></td>
+						</tr>
+					</table>
+					<table cellpadding="0" cellspacing="0" frame="void" rules="all">
+						<tr>
+							<td class="table-title" colspan="8">公路直达专线</td>
 						</tr>
 						<tr>
 							<th colspan="2">线路</th>
@@ -499,28 +510,6 @@
 							<td width="12%">{{item.price_light}}</td>
 							<td width="12%">{{item.lowest}}</td>
 							<td width="12%"><input type="button" value="下单" onclick="order()" /></td>
-						</tr>
-					</table>
-					<table cellpadding="0" cellspacing="0" frame="void" rules="all">
-						<tr>
-							<td class="table-title" colspan="7">铁路快线</td>
-						</tr>
-						<tr>
-							<th colspan="2">线路</th>
-							<th>服务品牌</th>
-							<th>参考时间</th>
-							<th>单价（重货）</th>
-							<th>单价（轻货）</th>
-							<th>操作</th>
-						</tr>
-						<tr v-for="item in route2">
-							<td width="10%" v-if="item.num!=0" rowspan="{{item.num}}">{{item.province}}</td>
-							<td width="20%">{{item.line}}</td>
-							<td width="14%">{{item.brand}}</td>
-							<td width="14%">{{item.time}}</td>
-							<td width="14%">{{item.price_heavy}}</td>
-							<td width="14%">{{item.price_light}}</td>
-							<td width="14%"><input type="button" value="下单" onclick="order()" /></td>
 						</tr>
 					</table>
 				</div>
@@ -580,6 +569,8 @@
 			
 			$(document).ready(function(){
 				sessionStorage.setItem("aindex",0);
+				$(".nav-item").removeClass("nav-active");
+				$(".nav-item").eq(0).addClass("nav-active");
 				<!-- $('#carousel ul').carouFredSel({ -->
 					<!-- prev:'#prev', -->
 					<!-- next:'#next', -->
@@ -661,6 +652,10 @@
 				$(".view1-left-content").eq(index).addClass("visible");
 			}
 			
+			function view1RightContentTo(index){
+				sessionStorage.setItem("psindex",index);
+				window.location.href="product_service.html";
+			}
 			function view1RightContentOver(index){
 				$(".view1-right-content-item").eq(0).children("img").attr("src","images/ps0.png");
 				$(".view1-right-content-item").eq(1).children("img").attr("src","images/ps1.png");
@@ -706,6 +701,7 @@
 						}),
 						success:function(msg){
 							if(msg.result==0){
+								sessionStorage.setItem("oindex",0);
 								sessionStorage.setItem("user-id",msg.user.id);
 								sessionStorage.setItem("tenant-id",msg.user.tenant_id);
 								$("#user-phone").css("display","none");
@@ -747,9 +743,19 @@
 				$("#user-name").text("");
 				$("#user-exit").css("display","none");
 			}
-			
-			function order(){
-				window.location.href="operate.html";
+			function order_query(){
+				var order_id=$("#order-id").val();
+				if(order_id==""){
+					$(".prompt-center").text("请输入运单号！");a_show();
+				}else{
+					if(sessionStorage.getItem("user-id")==null){
+						window.location.href="operate.html";
+					}else{
+						sessionStorage.setItem("bindex",3);
+						sessionStorage.setItem("order-id",order_id);
+						window.location.href="member.html";
+					}
+				}
 			}
 		</script>
 	</body>

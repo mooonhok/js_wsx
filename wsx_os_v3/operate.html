@@ -1,6 +1,6 @@
 <html>
 	<head>
-        <title>靖江市万事鑫</title>
+        <title>靖江市万事鑫联运</title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 		<link type="text/css" href="css/common.css" rel="stylesheet">
 		<link type="text/css" href="css/prompt.css" rel="stylesheet">
@@ -128,9 +128,8 @@
 				<div class="nav-items">
 					<div class="nav-item" onclick="navTo(0)" onmouseover="navOver(0)" onmouseout="navOut(0)">首页</div>
 					<div class="nav-item" onclick="navTo(1)" onmouseover="navOver(1)" onmouseout="navOut(1)">产品与服务</div>
-					<div class="nav-item" onclick="navTo(2)" onmouseover="navOver(2)" onmouseout="navOut(2)">查询与跟踪</div>
-					<div class="nav-item nav-active" onclick="navTo(3)" onmouseover="navOver(3)" onmouseout="navOut(3)">线上营运中心</div>
-					<div class="nav-item" onclick="navTo(4)" onmouseover="navOver(4)" onmouseout="navOut(4)">关于万事鑫</div>
+					<div class="nav-item" onclick="navTo(2)" onmouseover="navOver(2)" onmouseout="navOut(2)">线上营运中心</div>
+					<div class="nav-item" onclick="navTo(3)" onmouseover="navOver(3)" onmouseout="navOut(3)">关于万事鑫</div>
 				</div>
 			</div>
 		</div>
@@ -139,19 +138,13 @@
 				<div class="subnav-items" onmouseenter="subnavEnter(1)" onmouseleave="subnavLeave()">
 					<div class="subnav-item" onclick="subnavTo(0)">产品介绍</div>
 					<div class="subnav-item" onclick="subnavTo(1)">增值服务</div>
-					<div class="subnav-item" onclick="subnavTo(2)">业务范围</div>
-					<div class="subnav-item" onclick="subnavTo(3)">服务承诺</div>
-					<div class="subnav-item" onclick="subnavTo(4)">禁运品</div>
+					<div class="subnav-item" onclick="subnavTo(2)">禁运品</div>
 				</div>
-				<div class="subnav-items" onmouseenter="subnavEnter(2)" onmouseleave="subnavLeave()">
-					<div class="subnav-item" onclick="subnavTo(5)">运单查询</div>
-					<div class="subnav-item" onclick="subnavTo(6)">运价查询</div>
-					<div class="subnav-item" onclick="subnavTo(7)">部门查询</div>
-				</div>
-				<div class="subnav-items" onmouseenter="subnavEnter(5)" onmouseleave="subnavLeave()">
-					<div class="subnav-item" onclick="subnavTo(8)">公司简介</div>
-					<div class="subnav-item" onclick="subnavTo(9)">联系我们</div>
-					<div class="subnav-item" onclick="subnavTo(10)">加盟合作</div>
+				<div class="subnav-items" onmouseenter="subnavEnter(3)" onmouseleave="subnavLeave()">
+					<div class="subnav-item" onclick="subnavTo(3)">公司简介</div>
+					<div class="subnav-item" onclick="subnavTo(4)">业务部门</div>
+					<div class="subnav-item" onclick="subnavTo(5)">联系我们</div>
+					<div class="subnav-item" onclick="subnavTo(6)">加盟合作</div>
 				</div>
 			</div>
 		</div>
@@ -290,7 +283,9 @@
 			var url="http://123.207.144.43/";
 			
 			$(document).ready(function(){
-				sessionStorage.setItem("aindex",3);
+				sessionStorage.setItem("aindex",2);
+				$(".nav-item").removeClass("nav-active");
+				$(".nav-item").eq(2).addClass("nav-active");
 				if(sessionStorage.getItem("oindex")==1){
 					$("#login-view").css("display","none");
 					$("#register-view").css("display","block");
@@ -322,6 +317,7 @@
 						}),
 						success:function(msg){
 							if(msg.result==0){
+								sessionStorage.setItem("oindex",0);
 								sessionStorage.setItem("user-id",msg.user.id);
 								sessionStorage.setItem("tenant-id",msg.user.tenant_id);
 								window.location.href="member.html";
@@ -336,10 +332,12 @@
 				}
 			}
 			function jump1(){
+				sessionStorage.setItem("oindex",1);
 				$("#login-view").css("display","none");
 				$("#register-view").css("display","block");
 			}
 			function jump2(){
+				sessionStorage.setItem("oindex",2);
 				$("#login-view").css("display","none");
 				$("#forget-view").css("display","block");
 			}
@@ -399,6 +397,7 @@
 									}),
 									success:function(msg){
 										if(msg.result==0){
+											sessionStorage.setItem("oindex",0);
 											window.location.href="member.html";
 										}else{
 											$(".prompt-center").text(msg.desc);a_show();
@@ -417,6 +416,7 @@
 				}
 			}
 			function jump3(){
+				sessionStorage.setItem("oindex",0);
 				$("#login-view").css("display","block");
 				$("#register-view").css("display","none");
 			}
@@ -479,6 +479,7 @@
 				
 			}
 			function jump4(){
+				sessionStorage.setItem("oindex",0);
 				$("#login-view").css("display","block");
 				$("#forget-view").css("display","none");
 			}
