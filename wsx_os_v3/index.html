@@ -757,6 +757,15 @@
 					}
 				}
 			}
+			
+			function order(){
+				if(sessionStorage.getItem("user-id")==null){
+					window.location.href="operate.html";
+				}else{
+					sessionStorage.setItem("bindex",5);
+					window.location.href="member.html";
+				}
+			}
 		</script>
 	</body>
 </html>
