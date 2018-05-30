@@ -26,16 +26,17 @@ $app->get('/getRoutes',function(Request $request,Response $response){
 //        ->orderBy('province');
         $stmt = $selectStatement->execute();
         $data = $stmt->fetchAll();
-       $array1=array();
+        $array1=array();
         for($i=0;$i<count($data);$i++){
-            $selectStatement = $database->select()
-                ->from('route')
-                ->where('type','=',$type)
-                ->where('province','=',$data[$i]['province'])
-                ->orderBy('id');
-            $stmt = $selectStatement->execute();
-            $data2 = $stmt->fetchAll();
-            array_push($array1,$data2);
+            echo $i;
+//            $selectStatement = $database->select()
+//                ->from('route')
+//                ->where('type','=',$type)
+//                ->where('province','=',$data[$i]['province'])
+//                ->orderBy('id');
+//            $stmt = $selectStatement->execute();
+//            $data2 = $stmt->fetchAll();
+//            array_push($array1,$data2);
         }
              $array1=array_values(array_unset_tt($array1,'id'));
         if($array1!=null){
