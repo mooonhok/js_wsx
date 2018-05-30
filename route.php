@@ -101,6 +101,7 @@ $app->get('/getRoutes1',function(Request $request,Response $response){
     $array1=$data;
     return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$array1));
 });
+
 $app->options('/alterRoute0',function(Request $request,Response $response){
     $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
     $response=$response->withAddedHeader('Content-Type','application/json');
@@ -130,6 +131,64 @@ $app->put('/alterRoute0',function(Request $request,Response $response){
         return $response->withJson(array("result"=>"1","desc"=>"id为空"));
     }
 });
+
+$app->options('/alterRoute1',function(Request $request,Response $response){
+    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response=$response->withAddedHeader('Content-Type','application/json');
+    $response=$response->withAddedHeader("Access-Control-Allow-Methods", "PUT");
+    return $response;
+});
+
+$app->put('/alterRoute1',function(Request $request,Response $response){
+    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response=$response->withAddedHeader('Content-Type','application/json');
+    $database=localhost();
+    $body = $request->getBody();
+    $body=json_decode($body);
+    $id=$body->id;
+    $array=array();
+    foreach($body as $key=>$value){
+        if($key!="id"){
+        $array[$key]=$value;
+        }
+    }
+    if($id!=null||$id!=""){
+        $updateStatement = $database->update($array)
+            ->table('route')
+            ->where('id','=',$id);
+        $affectedRows = $updateStatement->execute();
+        return $response->withJson(array("result" => "0", "desc" => "success"));
+    }else{
+        return $response->withJson(array("result"=>"1","desc"=>"id为空"));
+    }
+});
+
+$app->get('/getRoute1',function(Request $request,Response $response){
+    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response=$response->withAddedHeader('Content-Type','application/json');
+    $database=localhost();
+    $id=$request->getParam('id');//获取请求路径后数据
+    $selectStatement = $database->select()
+        ->from('route')
+        ->where('id','=',$id);
+    $stmt = $selectStatement->execute();
+    $data = $stmt->fetchAll();
+    return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$data));
+});
+
+
+$app->delete('/deleteRoute',function(Request $request,Response $response){
+    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response=$response->withAddedHeader('Content-Type','application/json');
+    $database=localhost();
+    $id=$request->getParam('id');//获取请求路径后数据
+    $deleteStatement = $database->delete()
+        ->from('route')
+        ->where('id', '=', $id);
+    $affectedRows = $deleteStatement->execute();
+    return $response->withJson(array("result" => "0", "desc" => "success"));
+});
+
 
 $app->run();
 
