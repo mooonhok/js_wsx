@@ -936,7 +936,7 @@
 					<div class="table-content">
 						<table cellpadding="0" cellspacing="0" frame="void" rules="all" id="route2_table">
 							<tr>
-								<td class="table-title" colspan="7">铁路直达快线</td>
+								<td class="table-title" colspan="8">铁路直达快线</td>
 							</tr>
 							<tr>
 								<th colspan="2">线路</th>
@@ -944,16 +944,18 @@
 								<th>参考时间</th>
 								<th>单价（重货）</th>
 								<th>单价（轻货）</th>
+								<th>提货地点</th>
 								<th>操作</th>
 							</tr>
 							<tr v-for="item in route2">
 								<td width="10%" v-if="item.num!=0" rowspan="{{item.num}}">{{item.province}}</td>
-								<td width="20%">{{item.line}}</td>
-								<td width="14%">{{item.brand}}</td>
-								<td width="14%">{{item.time}}</td>
-								<td width="14%">{{item.price_heavy}}</td>
-								<td width="14%">{{item.price_light}}</td>
-								<td width="14%"><input type="button" value="下单" onclick="route_order()" /></td>
+								<td width="18%">{{item.line}}</td>
+								<td width="11%">{{item.brand}}</td>
+								<td width="11%">{{item.time}}</td>
+								<td width="12%">{{item.price_heavy}}</td>
+								<td width="12%">{{item.price_light}}</td>
+								<td width="14%">{{item.place}}</td>
+								<td width="12%"><input type="button" value="下单" onclick="route_order()" /></td>
 							</tr>
 						</table>
 						<table cellpadding="0" cellspacing="0" frame="void" rules="all" id="route1_table">
@@ -972,11 +974,11 @@
 							<tr v-for="item in route1">
 								<td width="10%" v-if="item.num!=0" rowspan="{{item.num}}">{{item.province}}</td>
 								<td width="18%">{{item.line}}</td>
-								<td width="12%">{{item.brand}}</td>
-								<td width="12%">{{item.time}}</td>
+								<td width="11%">{{item.brand}}</td>
+								<td width="11%">{{item.time}}</td>
 								<td width="12%">{{item.price_heavy}}</td>
 								<td width="12%">{{item.price_light}}</td>
-								<td width="12%">{{item.lowest}}</td>
+								<td width="14%">{{item.lowest}}</td>
 								<td width="12%"><input type="button" value="下单" onclick="route_order()" /></td>
 							</tr>
 						</table>

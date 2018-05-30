@@ -52,7 +52,7 @@
 						<div class="desc-title">公司简介</div>
 						<div class="desc-text">
 							<div class="desc-para">
-								<div class="desc-indent">靖江市万事鑫联运服务有限公司始建于1982年9月，江苏省重点物流企业、国家AAA级现代物流企业、国家联运、运输协会会员单位、泰州市文明单位。下设15个分公司，自备和挂靠运输车辆156辆，长年业务协作500-3万吨的水运（内河、长江、海洋）船舶近300艘、叉车5辆，仓储、堆场面积10000多平方米，联运综合大楼壹幢，占地总面积20000平方米，资产总值3000多万元，现已形成仓储、堆存、装卸、配载、配送相衔接；公、铁、水（路）联运、大型物件运输、集装箱、冷藏保鲜专用运输、综合货运站（场）、信息服务、包装服务为一体的综合性现代物流企业，年营收近亿元。</div>
+								<div class="desc-indent">我公司始建于2004年12月，江苏省重点物流企业、国家AAA级现代物流企业、国家联运、运输协会会员单位、泰州市文明单位。现已形成集货物运输、仓储、配载、大型物件运输、货物专用运输（集装箱、冷藏、保鲜、罐式）、综合货运站（场）；公铁联运、水路货物代理、船舶代理、停车场服务等一体的综合性现代物流企业。目前公司推出的互联网＋物流，客户可以随时登录公司官网、线上下单、物流费用明码标价，真正实行全透明物流服务，打破了传统物流封闭式现状。</div>
 							</div>
 						</div>
 						<div class="desc-img">
@@ -90,7 +90,7 @@
 								<div class="desc-half"><span class="desc-abstract">座机电话：</span>0523-84862770</div>
 								<div class="desc-half"><span class="desc-abstract">传真号码：</span>0523-89119966</div>
 								<div class="desc-half"><span class="desc-abstract">电子邮箱：</span>wanshixin2004@163.com</div>
-								<div class="desc-half" style="color:red"><span class="desc-abstract" style="color:red">客服热线：</span>0523-84862770</div>
+								<div class="desc-half" style="color:red"><span class="desc-abstract" style="color:red">客服热线：</span>0523-81165089</div>
 							</div>
 						</div>
 					</div>
@@ -170,6 +170,8 @@
 				var map=new BMap.Map("company-map");
 				var point=new BMap.Point(120.266173,32.007992);
 				map.centerAndZoom(point,18);
+				map.addControl(new BMap.NavigationControl());
+				map.addControl(new BMap.ScaleControl());
 				var marker=new BMap.Marker(point);
 				map.addOverlay(marker);
 				marker.setAnimation(BMAP_ANIMATION_BOUNCE);
@@ -183,6 +185,16 @@
 				$(".intro-subtitle").eq(index).addClass("subtitle-active");
 				$(".subtitle-view").removeClass("titleview-visible");
 				$(".subtitle-view").eq(index).addClass("titleview-visible");
+				if(index==2){
+					var map=new BMap.Map("company-map");
+					var point=new BMap.Point(120.266173,32.007992);
+					map.centerAndZoom(point,18);
+					map.addControl(new BMap.NavigationControl());
+					map.addControl(new BMap.ScaleControl());
+					var marker=new BMap.Marker(point);
+					map.addOverlay(marker);
+					marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+				}
 			}
 		</script>
 	</body>
