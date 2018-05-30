@@ -35,9 +35,9 @@ $app->get('/getRoutes',function(Request $request,Response $response){
                 ->orderBy('id');
             $stmt = $selectStatement->execute();
             $data2 = $stmt->fetchAll();
-            array_push($array1,$data2);
+            $array1=array_merge($array1,$data2);
         }
-//             $array1=array_values(array_unset_tt($array1,'id'));
+             $array1=array_values(array_unset_tt($array1,'id'));
         if($array1!=null){
             return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$array1));
         }else{
