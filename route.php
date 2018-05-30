@@ -85,7 +85,24 @@ $app->post('/addRoute',function(Request $request,Response $response){
     }
 });
 
-
+$app->get('/getRoutes1',function(Request $request,Response $response){
+    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response=$response->withAddedHeader('Content-Type','application/json');
+    $database=localhost();
+    $type=$request->getParam('type');//获取请求路径后数据
+    $province=$request->getParam('province');
+    $selectStatement = $database->select()
+        ->from('route')
+        ->where('type','=',$type)
+        ->where('province','=',$province);
+    $stmt = $selectStatement->execute();
+    $data = $stmt->fetchAll();
+    if($data!=null){
+        return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$data));
+    }else{
+        return $response->withJson(array("result"=>"2","desc"=>"尚未有数据"));
+    }
+});
 
 
 $app->run();
