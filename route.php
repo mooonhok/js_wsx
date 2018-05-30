@@ -46,6 +46,45 @@ $app->get('/getRoutes',function(Request $request,Response $response){
 });
 
 
+$app->post('/addRoute',function(Request $request,Response $response){
+    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response=$response->withAddedHeader('Content-Type','application/json');
+    $database=localhost();
+    $body = $request->getBody();
+    $body=json_decode($body);
+    $line=$body->line;
+    $province=$body->province;
+    $num=$body->num;
+    $band=$body->band;
+    $type=$body->type;
+    $array=array();
+    foreach($body as $key=>$value){
+        $array[$key]=$value;
+    }
+    if($line!=null||$line!=""){
+        if($province!=null||$province!=""){
+            if($band!=null||$type!=""){
+                    $selectStatement = $database->select()
+                        ->from('route');
+                    $stmt = $selectStatement->execute();
+                    $data = $stmt->fetchAll();
+                $array['id']=count($data)+1;
+                $insertStatement = $database->insert(array_keys($array))
+                    ->into('route')
+                    ->values(array_values($array));
+                $insertId = $insertStatement->execute(false);
+                return $response->withJson(array("result"=>"0","desc"=>"添加成功"));
+            }else{
+                return $response->withJson(array("result"=>"3","desc"=>"缺少服务品牌"));
+            }
+        }else{
+            return $response->withJson(array("result"=>"2","desc"=>"省份为空"));
+        }
+    }else{
+        return $response->withJson(array("result"=>"1","desc"=>"路线为空"));
+    }
+});
+
 
 
 
