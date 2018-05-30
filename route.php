@@ -39,7 +39,7 @@ $app->get('/getRoutes',function(Request $request,Response $response){
             for($i=0;$i<count($data);$i++){
                 $a=$data[$i]['province'];
                 for($j=$i;$j<count($data);$j++){
-                    if($data[$j]['province']!=$i){
+                    if($data[$j]['province']!=$a){
                         $array1[$j]=$data[$j];
                         $data[$j]="";
                     }
