@@ -91,17 +91,15 @@ $app->get('/getRoutes1',function(Request $request,Response $response){
     $database=localhost();
     $type=$request->getParam('type');//获取请求路径后数据
     $province=$request->getParam('province');
+    $array1=array();
     $selectStatement = $database->select()
         ->from('route')
         ->where('type','=',$type)
         ->where('province','=',$province);
     $stmt = $selectStatement->execute();
     $data = $stmt->fetchAll();
-    if($data!=null){
-        return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$data));
-    }else{
-        return $response->withJson(array("result"=>"2","desc"=>"尚未有数据"));
-    }
+    $array1=$data;
+    return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$array1));
 });
 
 
