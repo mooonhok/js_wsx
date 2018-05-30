@@ -23,8 +23,8 @@ $app->get('/getRoutes',function(Request $request,Response $response){
     $selectStatement = $database->select()
         ->from('route')
         ->where('type','=',$type)
-        ->orderBy('id','ASC')
-        ->orderBy('province');
+        ->orderBy('province')
+        ->orderBy('id','ASC');
         $stmt = $selectStatement->execute();
         $data = $stmt->fetchAll();
         if($data!=null){
