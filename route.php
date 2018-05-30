@@ -20,38 +20,26 @@ $app->get('/getRoutes',function(Request $request,Response $response){
     $response=$response->withAddedHeader('Content-Type','application/json');
     $database=localhost();
     $type=$request->getParam('type');//获取请求路径后数据
-    $selectStatement = $database->select()
+       $selectStatement = $database->select()
         ->from('route')
-        ->where('type','=',$type)
-//        ->orderBy('province')
-        ->orderBy('id','ASC');
+        ->where('type','=',$type);
+//        ->orderBy('province');
         $stmt = $selectStatement->execute();
         $data = $stmt->fetchAll();
-//    if($data!=null) {
-//        foreach ( $data as $key => $row ){
-//            $id[$key] = $row ['province'];
-//            $name[$key]=$row['id'];
-//        }
-//        array_multisort($id, SORT_ASC, $name, SORT_ASC, $data);
-//    }
-        $array1=array();
-        if($data!=null){
-            for($i=0;$i<count($data);$i++){
-                $a=$data[$i]['province'];
-                for($j=$i;$j<count($data);$j++){
-                    if($data[$j]['province']!=$a){
-                        $array1[$j]=$data[$j];
-                        $data[$j]="";
-                    }
-                }
-                $data=array_filter($data);
-                if($array1!=null){
-                  $data=array_merge($data,$array1);
-                }
-            }
+       $array1=array();
+        for($i=0;$i<count($data);$i++){
+            $selectStatement = $database->select()
+                ->from('route')
+                ->where('type','=',$type)
+                ->where('province','=',$data[$i]['province'])
+                ->orderBy('id');
+            $stmt = $selectStatement->execute();
+            $data2 = $stmt->fetchAll();
+            array_push($array1,$data2);
         }
-        if($data!=null){
-            return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$data));
+             $array1=array_values(array_unset_tt($array1,'id'));
+        if($array1!=null){
+            return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$array1));
         }else{
             return $response->withJson(array("result"=>"2","desc"=>"尚未有数据"));
         }
@@ -62,6 +50,23 @@ $app->get('/getRoutes',function(Request $request,Response $response){
 
 
 $app->run();
+
+
+function array_unset_tt($arr,$key){
+    //建立一个目标数组
+    $res = array();
+    foreach ($arr as $value) {
+        //查看有没有重复项
+        if(isset($res[$value[$key]])){
+            //有：销毁
+            unset($value[$key]);
+        }
+        else{
+            $res[$value[$key]] = $value;
+        }
+    }
+    return $res;
+}
 
 function localhost()
 {
