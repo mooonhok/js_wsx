@@ -27,15 +27,29 @@ $app->get('/getRoutes',function(Request $request,Response $response){
         ->orderBy('id','ASC');
         $stmt = $selectStatement->execute();
         $data = $stmt->fetchAll();
-    if($data!=null) {
-        foreach ( $data as $key => $row ){
-            $id[$key] = $row ['province'];
-            $name[$key]=$row['id'];
+//    if($data!=null) {
+//        foreach ( $data as $key => $row ){
+//            $id[$key] = $row ['province'];
+//            $name[$key]=$row['id'];
+//        }
+//        array_multisort($id, SORT_ASC, $name, SORT_ASC, $data);
+//    }
+        $array1=array();
+        if($data!=null){
+            for($i=0;$i<count($data);$i++){
+                $a=$data[$i]['province'];
+                for($j=$i;$j<count($data);$j++){
+                    if($data[$j]['province']!=$i){
+                        $array1[$j]=$data[$j];
+                        $data[$j]="";
+                    }
+                }
+                $data=array_filter($data);
+                if($array1!=null){
+                  $data=array_merge($data,$array1);
+                }
+            }
         }
-        array_multisort($id, SORT_ASC, $name, SORT_ASC, $data);
-    }
-
-
         if($data!=null){
             return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$data));
         }else{
