@@ -22,7 +22,9 @@ $app->get('/getRoutes',function(Request $request,Response $response){
     $type=$request->getParam('type');//获取请求路径后数据
     $selectStatement = $database->select()
         ->from('route')
-        ->where('type','=',$type);
+        ->where('type','=',$type)
+        ->orderBy('id','ASC')
+        ->orderBy('province');
         $stmt = $selectStatement->execute();
         $data = $stmt->fetchAll();
         if($data!=null){
