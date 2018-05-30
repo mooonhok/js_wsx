@@ -38,12 +38,12 @@ $app->get('/getRoutes',function(Request $request,Response $response){
 //            $data2 = $stmt->fetchAll();
 //            array_push($array1,$data2);
         }
-             $array1=array_values(array_unset_tt($array1,'id'));
-        if($array1!=null){
-            return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$array1));
-        }else{
-            return $response->withJson(array("result"=>"2","desc"=>"尚未有数据"));
-        }
+//             $array1=array_values(array_unset_tt($array1,'id'));
+//        if($array1!=null){
+//            return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$array1));
+//        }else{
+//            return $response->withJson(array("result"=>"2","desc"=>"尚未有数据"));
+//        }
 });
 
 
