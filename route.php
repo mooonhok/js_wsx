@@ -101,7 +101,35 @@ $app->get('/getRoutes1',function(Request $request,Response $response){
     $array1=$data;
     return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$array1));
 });
+$app->options('/alterRoute0',function(Request $request,Response $response){
+    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response=$response->withAddedHeader('Content-Type','application/json');
+    $response=$response->withAddedHeader("Access-Control-Allow-Methods", "PUT");
+    return $response;
+});
 
+
+
+$app->put('/alterRoute0',function(Request $request,Response $response){
+    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response=$response->withAddedHeader('Content-Type','application/json');
+    $database=localhost();
+    $body = $request->getBody();
+    $body=json_decode($body);
+    $id=$body->id;
+    $num=$body->num;
+    if($id!=null||$id!=""){
+        $array1=array();
+        $array1['num']=$num;
+        $updateStatement = $database->update($array1)
+            ->table('route')
+            ->where('id','=',$id);
+        $affectedRows = $updateStatement->execute();
+        return $response->withJson(array("result" => "0", "desc" => "success"));
+    }else{
+        return $response->withJson(array("result"=>"1","desc"=>"id为空"));
+    }
+});
 
 $app->run();
 
