@@ -23,11 +23,19 @@ $app->get('/getRoutes',function(Request $request,Response $response){
     $selectStatement = $database->select()
         ->from('route')
         ->where('type','=',$type)
-        ->orderBy('province')
+//        ->orderBy('province')
         ->orderBy('id','ASC');
-
         $stmt = $selectStatement->execute();
         $data = $stmt->fetchAll();
+    if($data!=null) {
+        foreach ( $data as $key => $row ){
+            $id[$key] = $row ['province'];
+            $name[$key]=$row['id'];
+        }
+        array_multisort($id, SORT_ASC, $name, SORT_ASC, $data);
+    }
+
+
         if($data!=null){
             return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$data));
         }else{
