@@ -28,22 +28,21 @@ $app->get('/getRoutes',function(Request $request,Response $response){
         $data = $stmt->fetchAll();
         $array1=array();
         for($i=0;$i<count($data);$i++){
-            echo $i;
-//            $selectStatement = $database->select()
-//                ->from('route')
-//                ->where('type','=',$type)
-//                ->where('province','=',$data[$i]['province'])
-//                ->orderBy('id');
-//            $stmt = $selectStatement->execute();
-//            $data2 = $stmt->fetchAll();
-//            array_push($array1,$data2);
+            $selectStatement = $database->select()
+                ->from('route')
+                ->where('type','=',$type)
+                ->where('province','=',$data[$i]['province'])
+                ->orderBy('id');
+            $stmt = $selectStatement->execute();
+            $data2 = $stmt->fetchAll();
+            array_push($array1,$data2);
         }
 //             $array1=array_values(array_unset_tt($array1,'id'));
-//        if($array1!=null){
-//            return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$array1));
-//        }else{
-//            return $response->withJson(array("result"=>"2","desc"=>"尚未有数据"));
-//        }
+        if($array1!=null){
+            return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$array1));
+        }else{
+            return $response->withJson(array("result"=>"2","desc"=>"尚未有数据"));
+        }
 });
 
 
