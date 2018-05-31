@@ -90,7 +90,7 @@ $app->get('/getRoutes1',function(Request $request,Response $response){
     $selectStatement = $database->select()
         ->from('route')
         ->where('type','=',$type)
-        ->where('province','=',$province);
+        ->where('province','=',$province) ;
     $stmt = $selectStatement->execute();
     $data = $stmt->fetchAll();
     $array1=$data;
@@ -170,7 +170,12 @@ $app->get('/getRoute1',function(Request $request,Response $response){
     $data = $stmt->fetchAll();
     return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$data));
 });
-
+$app->options('/deleteRoute',function(Request $request,Response $response){
+    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response=$response->withAddedHeader('Content-Type','application/json');
+    $response=$response->withAddedHeader("Access-Control-Allow-Methods", "DELETE");
+    return $response;
+});
 
 $app->delete('/deleteRoute',function(Request $request,Response $response){
     $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
