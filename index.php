@@ -23,10 +23,13 @@ $app = new Slim\App();
  * argument for `Slim::get`, `Slim::post`, `Slim::put`, `Slim::patch`, and `Slim::delete`
  * is an anonymous function.
  */
+header("Location: http://www.jswsx56.cn");
+
+
 $app->get('/', function ($request, $response, $args) {
-//    $response->write("Welcome to 靖江万事鑫!");
-//    return $response;
-    header("Location: http://www.jswsx56.cn");
+    $response->write("Welcome to 靖江万事鑫!");
+    return $response;
+
 });
 $app->get('/hello[/{name}]', function ($request, $response, $args) {
     $response->write("Hello, " . $args['name']);
