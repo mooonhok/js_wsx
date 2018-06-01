@@ -24,8 +24,9 @@ $app = new Slim\App();
  * is an anonymous function.
  */
 $app->get('/', function ($request, $response, $args) {
-    $response->write("Welcome to 靖江万事鑫!");
-    return $response;
+//    $response->write("Welcome to 靖江万事鑫!");
+//    return $response;
+    header("Location: http://www.jswsx56.cn");
 });
 $app->get('/hello[/{name}]', function ($request, $response, $args) {
     $response->write("Hello, " . $args['name']);
