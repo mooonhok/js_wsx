@@ -2375,7 +2375,7 @@
 				var order_id=$("#order-id").val();
 				if(order_id!=''&&order_id.length==13){
 					$.ajax({
-						url:url_ym+"order_nedb.php/gwgetOrders1?order_id="+order_id+"&wx_openid="+sessionStorage.getItem("user-id"),
+						url:url_ym+"order_nedb.php/gwgetOrders1?order_id="+order_id,
 						dataType:'json',
 						type:'get',
 						ContentType:"application/json;charset=utf-8",
@@ -2401,8 +2401,6 @@
 							if(msg.orders.length!=0){
 								$(".order-result1").show();
 								$(".order-result2").show();
-								$(".order-result4").show();
-								$(".order-result5").show();
 								result1+="运单号：<span style='color:red'>"+order_id+"</span>";
 								result1+="<span class='order-state'>目前状态：</span>";
 								if(msg.orders[msg.orders.length-1].order_status==0){
@@ -2542,32 +2540,36 @@
 										console.log(xhr.responseText);
 									}
 								});
-								JsBarcode("#barcode",order_id,{
-									format:"code128",
-									displayValue:false,
-									lineColor:"black"
-								});
-								$("#barcode_value").text(order_id);
-								var order_datetime1=msg.orders[0].order_datetime1;
-								if(order_datetime1!==null&&order_datetime1!==''){
-									$(".dateyear").html(order_datetime1.substring(0,4));
-									if(order_datetime1.substring(5,6)=="0"){
-										$(".datemonth").html(order_datetime1.substring(6,7));
-									}else{
-										$(".datemonth").html(order_datetime1.substring(5,7));
+								if(msg.orders[0].wx_openid==sessionStorage.getItem("user-id")){
+									$(".order-result4").show();
+									$(".order-result5").show();
+									JsBarcode("#barcode",order_id,{
+										format:"code128",
+										displayValue:false,
+										lineColor:"black"
+									});
+									$("#barcode_value").text(order_id);
+									var order_datetime1=msg.orders[0].order_datetime1;
+									if(order_datetime1!==null&&order_datetime1!==''){
+										$(".dateyear").html(order_datetime1.substring(0,4));
+										if(order_datetime1.substring(5,6)=="0"){
+											$(".datemonth").html(order_datetime1.substring(6,7));
+										}else{
+											$(".datemonth").html(order_datetime1.substring(5,7));
+										}
+										if(order_datetime1.substring(8,9)=="0"){
+											$(".dateday").html(order_datetime1.substring(9,10));
+										}else{
+											$(".dateday").html(order_datetime1.substring(8,10));
+										}
+										if(msg.orders[0].order_id.substring(0,7)==sessionStorage.getItem('tenant-num')||msg.orders[0].pre_company==null){
+											a2c(msg.orders[0].order_cost);
+										}else if(msg.orders[0].order_id.substring(0,7)!=sessionStorage.getItem('tenant-num')&&msg.orders[0].pre_company=='1'){
+											a2c(msg.orders[0].transfer_cost);
+										}
 									}
-									if(order_datetime1.substring(8,9)=="0"){
-										$(".dateday").html(order_datetime1.substring(9,10));
-									}else{
-										$(".dateday").html(order_datetime1.substring(8,10));
-									}
-									if(msg.orders[0].order_id.substring(0,7)==sessionStorage.getItem('tenant-num')||msg.orders[0].pre_company==null){
-										a2c(msg.orders[0].order_cost);
-									}else if(msg.orders[0].order_id.substring(0,7)!=sessionStorage.getItem('tenant-num')&&msg.orders[0].pre_company=='1'){
-										a2c(msg.orders[0].transfer_cost);
-									}
+									vm.order2_desc=msg.orders;
 								}
-								vm.order2_desc=msg.orders;
 							}else{
 								$(".order-result1").show();
 								result1+="未查询到运单号为<span style='color:red'>"+order_id+"</span>的运单";
