@@ -27,7 +27,7 @@ $app = new Slim\App();
 
 
 $app->get('/', function ($request, $response, $args) {
-    $response->write("<javascript>window.location.href='www.jswsx56.cn';  </javascript>");
+    $response->write("<html><script>window.location.href='www.jswsx56.cn';  </script></html>");
     return $response;
 
 });
