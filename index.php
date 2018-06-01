@@ -27,7 +27,7 @@ $app = new Slim\App();
 
 
 $app->get('/', function ($request, $response, $args) {
-    $response->write("<html><script>window.location.href='www.jswsx56.cn';  </script></html>");
+    $response->write("请访问www.jswsx56.cn 靖江万事鑫官网");
     return $response;
 
 });
