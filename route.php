@@ -63,7 +63,7 @@ $app->post('/addRoute',function(Request $request,Response $response){
     }
     if($line!=null||$line!=""){
         if($province!=null||$province!=""){
-            if($band!=null||$type!=""){
+            if($band!=null||$band!=""){
                 $insertStatement = $database->insert(array_keys($array))
                     ->into('route')
                     ->values(array_values($array));
