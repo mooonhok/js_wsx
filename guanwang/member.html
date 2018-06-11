@@ -2731,6 +2731,7 @@
 							return;
 						}
 						var plan=results.getPlan(0);
+						gweight=$("#gweight").val();
 						output+="<p>";
 						output+="参考价格：";
 						output+=Math.round(0.2*plan.getDistance(true).substring(0,plan.getDistance(true).length-2)*gweight*1000000)/1000000+"-"+0.25*Math.round(plan.getDistance(true).substring(0,plan.getDistance(true).length-2)*gweight*1000000)/1000000+"元";
@@ -2746,6 +2747,7 @@
 						onPolylinesSet:function(){
 							setTimeout(function(){
 								$("#price-result").html(output);
+								output="";
 							},"1000");
 						}
 					});
