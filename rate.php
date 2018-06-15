@@ -28,7 +28,7 @@ $app->get('/getRates',function(Request $request,Response $response){
     if($data!=null){
         for($i=0;$i<count($data);$i++){
             $selectStatement = $database->select()
-                ->from('type')
+                ->from('lorry_type')
                 ->where('id','=',$data[$i]['lorry_type']);
             $stmt = $selectStatement->execute();
             $data2= $stmt->fetch();
