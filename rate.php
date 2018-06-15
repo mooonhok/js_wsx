@@ -15,7 +15,7 @@ use Slim\PDO\Statement\SelectStatement;
 
 $app = new \Slim\App();
 
-$app->get('/getRoute1',function(Request $request,Response $response){
+$app->get('/getRates',function(Request $request,Response $response){
     $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
     $response=$response->withAddedHeader('Content-Type','application/json');
     $database=localhost();
