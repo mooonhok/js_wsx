@@ -575,6 +575,9 @@
 				font-size:15px;
 				margin-right:5px;
 			}
+			.price-content span:nth-child(3){
+				margin-left:160px;
+			}
 			.price-content select{
 				width:200px;
 				height:30px;
@@ -1012,6 +1015,24 @@
 				<div class="detail">
 					<div class="detail-title">运价查询</div>
 					<div class="price-content">
+						<span>运输方式：</span>
+						<select id="transfer_type">
+							<option value="0">请选择</option>
+							<option value="1">整车运输</option>
+							<!-- <option value="2">零担运输</option> -->
+						</select>
+						<span>车型：</span>
+						<select id="lorry_type">
+							<option value="0">请选择</option>
+							<option value="1">9.6米（18T）</option>
+							<option value="2">5.2米（6T）</option>
+							<option value="3">4.2米（3T）</option>
+							<option value="4">6.2米（10T）</option>
+							<option value="5">13米（32T）</option>
+							<option value="6">17.5米（35T）</option>
+						</select>
+					</div>
+					<div class="price-content">
 						<span>发货地址：</span>
 						<select id="begin-province" onchange="hunt5(parseFloat(this.value))">
 							<option value="0">请选择省</option>
@@ -1034,11 +1055,6 @@
 							<option v-for="item in city2" value="{{item.id}}">{{item.name}}</option>
 						</select>
 						<input type="text" id="end-address" />
-					</div>
-					<div class="price-content">
-						<span>货物重量：</span>
-						<span><input type="text" id="gweight" /></span>
-						<span>吨</span>
 					</div>
 					<div class="price-query">
 						<input type="button" value="查询"  id="price-query" onclick="price_query()" />
@@ -2696,14 +2712,19 @@
 			map.centerAndZoom(new BMap.Point(116.404,39.915),12);
 			map.enableScrollWheelZoom(); 
 			function price_query(){
+				var transfer_type=$("#transfer_type").val();
+				var lorry_type=$("#lorry_type").val();
 				var sprovince_name=$("#begin-province").find("option:selected").text();
 				var scity_name=$("#begin-city").find("option:selected").text();
 				var saddress=$("#begin-address").val();
 				var eprovince_name=$("#end-province").find("option:selected").text();
 				var ecity_name=$("#end-city").find("option:selected").text();
 				var eaddress=$("#end-address").val();
-				var gweight=$("#gweight").val();
-				if(sprovince_name=="请选择省"){
+				if(transfer_type==0){
+					$(".prompt-center").text("请选择运输方式！");a_show();
+				}else if(lorry_type==0){
+					$(".prompt-center").text("请选择车型！");a_show();
+				}else if(sprovince_name=="请选择省"){
 					$(".prompt-center").text("请选择发货省！");a_show();
 				}else if(scity_name=="请选择市"){
 					$(".prompt-center").text("请选择发货市！");a_show();
@@ -2715,26 +2736,114 @@
 					$(".prompt-center").text("请选择收货市！");a_show();
 				}else if(eaddress==""){
 					$(".prompt-center").text("请填写收货详细地址！");a_show();
-				}else if(gweight==""){
-					$(".prompt-center").text("请填写货物重量！");a_show();
-				}else if(isNaN(gweight)||gweight.substring(0,1)=='-'){
-					$(".prompt-center").text("请检查货物重量是否为数字（不能为负数，但可包含小数点）！");a_show();
-				}else if(gweight=='0'||gweight*10000000==0){
-					$(".prompt-center").text("货物重量不能为0！");a_show();
 				}else{
 					var a=sprovince_name+scity_name+saddress;
 					var b=eprovince_name+ecity_name+eaddress;
 					$("#price-result").empty();
+					var weight=0;
+					var rate=0;
 					var output="";
 					var searchComplete=function(results) {
 						if(transit.getStatus()!=BMAP_STATUS_SUCCESS) {
 							return;
 						}
 						var plan=results.getPlan(0);
-						gweight=$("#gweight").val();
+						var distance=parseFloat(plan.getDistance(true).substring(0,plan.getDistance(true).length-2));
+						lorry_type=$("#lorry_type").val();
+						if(lorry_type==1){
+							weight=18;
+							if(distance<=50){
+								rate=5;
+							}else if(50<distance<=200){
+								rate=0.5;
+							}else if(200<distance<=500){
+								rate=0.38;
+							}else if(500<distance<=800){
+								rate=0.31;
+							}else if(800<distance<=1000){
+								rate=0.3;
+							}else if(distance>1000){
+								rate=0.26;
+							}
+						}else if(lorry_type==2){
+							weight=6;
+							if(distance<=50){
+								rate=5;
+							}else if(50<distance<=200){
+								rate=1;
+							}else if(200<distance<=500){
+								rate=0.83;
+							}else if(500<distance<=800){
+								rate=0.83;
+							}else if(800<distance<=1000){
+								rate=0.83;
+							}else if(distance>1000){
+								rate=0.26;
+							}
+						}else if(lorry_type==3){
+							weight=3;
+							if(distance<=50){
+								rate=5;
+							}else if(50<distance<=200){
+								rate=1.3;
+							}else if(200<distance<=500){
+								rate=1.3;
+							}else if(500<distance<=800){
+								rate=1.25;
+							}else if(800<distance<=1000){
+								rate=1.25;
+							}else if(distance>1000){
+								rate=1.25;
+							}
+						}else if(lorry_type==4){
+							weight=10;
+							if(distance<=50){
+								rate=5;
+							}else if(50<distance<=200){
+								rate=0.75;
+							}else if(200<distance<=500){
+								rate=0.6;
+							}else if(500<distance<=800){
+								rate=0.56;
+							}else if(800<distance<=1000){
+								rate=0.55;
+							}else if(distance>1000){
+								rate=0.26;
+							}
+						}else if(lorry_type==5){
+							weight=32;
+							if(distance<=50){
+								rate=5;
+							}else if(50<distance<=200){
+								rate=0.28;
+							}else if(200<distance<=500){
+								rate=0.28;
+							}else if(500<distance<=800){
+								rate=0.25;
+							}else if(800<distance<=1000){
+								rate=0.25;
+							}else if(distance>1000){
+								rate=0.26;
+							}
+						}else if(lorry_type==6){
+							weight=35;
+							if(distance<=50){
+								rate=5;
+							}else if(50<distance<=200){
+								rate=0.66;
+							}else if(200<distance<=500){
+								rate=0.36;
+							}else if(500<distance<=800){
+								rate=0.31;
+							}else if(800<distance<=1000){
+								rate=0.3;
+							}else if(distance>1000){
+								rate=0.26;
+							}
+						}
 						output+="<p>";
 						output+="参考价格：";
-						output+=Math.round(0.2*plan.getDistance(true).substring(0,plan.getDistance(true).length-2)*gweight*1000000)/1000000+"-"+0.25*Math.round(plan.getDistance(true).substring(0,plan.getDistance(true).length-2)*gweight*1000000)/1000000+"元";
+						output+=Math.round(distance*rate*weight*1000000)/1000000+"元";
 						output+="</p>";
 						output+="<p style='color:red;font-size:15px'>注意：以上价格仅供参考，实际价格请咨询QQ客服！</p>";
 					}
