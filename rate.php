@@ -22,7 +22,7 @@ $app->get('/getRates',function(Request $request,Response $response){
     $transfer_type=$request->getParam('transfer_type');//获取请求路径后数据
     $selectStatement = $database->select()
         ->from('rate')
-        ->where('trabsfer_type','=',$transfer_type);
+        ->where('transfer_type','=',$transfer_type);
     $stmt = $selectStatement->execute();
     $data = $stmt->fetchAll();
     if($data!=null){
