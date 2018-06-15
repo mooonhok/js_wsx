@@ -96,6 +96,19 @@ $app->delete('/deleteNotice',function(Request $request,Response $response){
     return $response->withJson(array("result" => "0", "desc" => "success"));
 });
 
+$app->get('/getNotice',function(Request $request,Response $response){
+    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response=$response->withAddedHeader('Content-Type','application/json');
+    $database=localhost();
+    $id=$request->getParam('id');
+    $selectStatement = $database->select()
+        ->from('notice')
+        ->where('id','=',$id);
+    $stmt = $selectStatement->execute();
+    $data = $stmt->fetchAll();
+    return $response->withJson(array("result" => "0", "desc" => "success",'notice'=>$data));
+});
+
 
 $app->run();
 
