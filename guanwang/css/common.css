@@ -77,6 +77,34 @@ body{
 	color:orange;
 }
 
+/*公告*/
+.scroll{
+	width:100%;
+	height:50px;
+	line-height:50px;
+	margin:0 auto;
+}
+.marquee{
+	width:1200px;
+}
+#horn{
+	width:26px;
+	heihgt:26px;
+	margin-top:12px;
+	vertical-align:top;
+}
+marquee{
+	display:inline-block;
+	width:1170px;
+}
+marquee a{
+	font-size:17px;
+	margin-left:160px;
+}
+marquee a:first-child{
+	margin-left:0;
+}
+
 /*内容*/
 .bg-view{
 	width:100%;

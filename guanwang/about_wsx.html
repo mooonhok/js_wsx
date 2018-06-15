@@ -37,6 +37,14 @@
 			</div>
 		</div>
 		<div class="bg-view"></div>
+		<div class="scroll" style="background:#ffffff">
+			<div class="marquee">
+				<img id="horn" src="images/horn.png" />
+				<marquee behavior="scroll" direction="left" scrollamount="10" scrolldelay="0" onmouseover="this.stop();" onmouseout="this.start();">
+					<p><a v-for="item in notice">{{item.content}}</a></p>
+				</marquee>
+			</div>
+		</div>
 		<div class="intro-view">
 			<div class="detail">
 				<div class="intro-left">
@@ -134,10 +142,12 @@
 		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Z7ZjajqB1B4SRU895btxr6ZsLwGeKQOj"></script>
 		<script>
 			var url="http://api.jswsx56.cn/";
+			
 			var vm;
 			vm=new Vue({
 				el:'#os',
 				data:{
+					notice:{},
 					apartment:{}
 				}
 			});
@@ -150,6 +160,21 @@
 				$(".subtitle-view").removeClass("titleview-visible");
 				$(".intro-subtitle").eq(sessionStorage.getItem("awindex")).addClass("subtitle-active");
 				$(".subtitle-view").eq(sessionStorage.getItem("awindex")).addClass("titleview-visible");
+				
+				$.ajax({
+					url:url+"notice.php/getNotices",
+					dataType:'json',
+					type:'get',
+					ContentType:"application/json;charset=utf-8",
+					data:JSON.stringify({
+					}),
+					success:function(msg){
+						vm.notice=msg.notices;
+					},
+					error:function(e){
+						console.log(e);
+					}
+				});
 				
 				$.ajax({
 					url:url+"apartment.php/getApartments",

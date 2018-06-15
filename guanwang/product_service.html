@@ -5,7 +5,7 @@
 		<link type="text/css" href="css/common.css" rel="stylesheet">
 		<link rel="shortcut icon" href="favicon.ico" />
 	</head>
-	<body>
+	<body id="os">
 		<div class="nav">
 			<div class="detail">
 				<div class="logo" onclick="window.location.href='index.html'">
@@ -35,6 +35,14 @@
 			</div>
 		</div>
 		<div class="bg-view"></div>
+		<div class="scroll" style="background:#ffffff">
+			<div class="marquee">
+				<img id="horn" src="images/horn.png" />
+				<marquee behavior="scroll" direction="left" scrollamount="10" scrolldelay="0" onmouseover="this.stop();" onmouseout="this.start();">
+					<p><a v-for="item in notice">{{item.content}}</a></p>
+				</marquee>
+			</div>
+		</div>
 		<div class="intro-view">
 			<div class="detail">
 				<div class="intro-left">
@@ -305,7 +313,18 @@
 		</div>
 		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript" src="js/vue.js"></script>
 		<script>
+			var url="http://api.jswsx56.cn/";
+			
+			var vm;
+			vm=new Vue({
+				el:'#os',
+				data:{
+					notice:{}
+				}
+			});
+			
 			$(document).ready(function(){
 				sessionStorage.setItem("aindex",1);
 				$(".nav-item").removeClass("nav-active");
@@ -321,6 +340,21 @@
 					$(".smalltitle-item").eq(sessionStorage.getItem("psindex")).addClass("smalltitle-active");
 					$(".smalltitle-view").eq(sessionStorage.getItem("psindex")).addClass("titleview-visible");
 				}
+				
+				$.ajax({
+					url:url+"notice.php/getNotices",
+					dataType:'json',
+					type:'get',
+					ContentType:"application/json;charset=utf-8",
+					data:JSON.stringify({
+					}),
+					success:function(msg){
+						vm.notice=msg.notices;
+					},
+					error:function(e){
+						console.log(e);
+					}
+				});
 			});
 			
 			function smalltitleTo(index){
