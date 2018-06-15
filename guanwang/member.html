@@ -1021,7 +1021,7 @@
 							<option value="1">整车运输</option>
 							<!-- <option value="2">零担运输</option> -->
 						</select>
-						<span>车型：</span>
+						<span>车长：</span>
 						<select id="lorry_type">
 							<option value="0">请选择</option>
 							<option v-for="item in lorry_type" value="{{item.id}}">{{item.type}}</option>
@@ -2733,7 +2733,7 @@
 				if(transfer_type==0){
 					$(".prompt-center").text("请选择运输方式！");a_show();
 				}else if(lorry_type==0){
-					$(".prompt-center").text("请选择车型！");a_show();
+					$(".prompt-center").text("请选择车长！");a_show();
 				}else if(sprovince_name=="请选择省"){
 					$(".prompt-center").text("请选择发货省！");a_show();
 				}else if(scity_name=="请选择市"){
