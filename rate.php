@@ -38,7 +38,7 @@ $app->get('/getRates',function(Request $request,Response $response){
                 ->where('id','=',$data[$i]['distance']);
             $stmt = $selectStatement->execute();
             $data3= $stmt->fetch();
-            $data[$i]['diatance']=$data3;
+            $data[$i]['distance']=$data3;
         }
     }
     return $response->withJson(array("result" => "0", "desc" => "success",'rates'=>$data));
@@ -77,7 +77,38 @@ $app->put('/alterRate',function(Request $request,Response $response){
     }
 });
 
-
+$app->get('/getRate',function(Request $request,Response $response){
+    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response=$response->withAddedHeader('Content-Type','application/json');
+    $database=localhost();
+    $transfer_type=$request->getParam('transfer_type');//获取请求路径后数据
+    $lorry_type=$request->getParam('lorry_type');
+    $distance=$request->getParam('distance');
+    $selectStatement = $database->select()
+        ->from('rate')
+        ->where('distance','=',$distance)
+        ->where('lorry_type','=',$lorry_type)
+        ->where('transfer_type','=',$transfer_type);
+    $stmt = $selectStatement->execute();
+    $data = $stmt->fetch();
+//    if($data!=null){
+//        for($i=0;$i<count($data);$i++){
+//            $selectStatement = $database->select()
+//                ->from('lorry_type')
+//                ->where('id','=',$data[$i]['lorry_type']);
+//            $stmt = $selectStatement->execute();
+//            $data2= $stmt->fetch();
+//            $data[$i]['lorry_type']=$data2;
+//            $selectStatement = $database->select()
+//                ->from('distance')
+//                ->where('id','=',$data[$i]['distance']);
+//            $stmt = $selectStatement->execute();
+//            $data3= $stmt->fetch();
+//            $data[$i]['diatance']=$data3;
+//        }
+//    }
+    return $response->withJson(array("result" => "0", "desc" => "success",'rate'=>$data));
+});
 
 
 $app->run();
