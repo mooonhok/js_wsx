@@ -81,21 +81,7 @@ $app->put('/alterRate',function(Request $request,Response $response){
 
 
 $app->run();
-function array_unset_tt($arr,$key){
-    //建立一个目标数组
-    $res = array();
-    foreach ($arr as $value) {
-        //查看有没有重复项
-        if(isset($res[$value[$key]])){
-            //有：销毁
-            unset($value[$key]);
-        }
-        else{
-            $res[$value[$key]] = $value;
-        }
-    }
-    return $res;
-}
+
 
 function localhost()
 {
