@@ -7,10 +7,36 @@
 		<link type="text/css" href="css/prompt.css" rel="stylesheet">
 		<link rel="shortcut icon" href="favicon.ico" />
 		<style>
+			.scroll{
+				width:100%;
+				height:50px;
+				line-height:50px;
+				margin:0 auto;
+			}
+			.marquee{
+				width:1200px;
+			}
+			#horn{
+				width:26px;
+				heihgt:26px;
+				margin-top:12px;
+				vertical-align:top;
+			}
+			marquee{
+				display:inline-block;
+				width:1170px;
+			}
+			marquee a{
+				font-size:17px;
+				margin-left:160px;
+			}
+			marquee a:first-child{
+				margin-left:0;
+			}
 			.view1{
 				width:100%;
 				height:370px;
-				padding:60px 0 50px 0;
+				padding:50px 0;
 				background:#ffffff;
 			}
 			.view1-left{
@@ -372,6 +398,14 @@
 			</ul>
 			<ul class="btn"></ul>
 		</div>
+		<div class="scroll">
+			<div class="marquee">
+				<img id="horn" src="images/horn.png" />
+				<marquee behavior="scroll" direction="left" scrollamount="10" scrolldelay="0" onmouseover="this.stop();" onmouseout="this.start();">
+					<p><a v-for="item in notice">{{item.content}}</a></p>
+				</marquee>
+			</div>
+		</div>
 		<div class="view1">
 			<div class="detail">
 				<div class="view1-left">
@@ -574,6 +608,7 @@
 			vm=new Vue({
 				el:'#os',
 				data:{
+					notice:{},
 					route1:{},
 					route2:{}
 				}
@@ -624,6 +659,21 @@
 					});
 					$("#user-exit").css("display","inline-block");
 				}
+				
+				$.ajax({
+					url:url+"notice.php/getNotices",
+					dataType:'json',
+					type:'get',
+					ContentType:"application/json;charset=utf-8",
+					data:JSON.stringify({
+					}),
+					success:function(msg){
+						vm.notice=msg.notices;
+					},
+					error:function(e){
+						console.log(e);
+					}
+				});
 				
 				$.ajax({
 					url:url+"route.php/getRoutes?type=0",
