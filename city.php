@@ -119,14 +119,21 @@ $app->post('/mycurldemo',function(Request $request,Response $response)use($curl)
 $app->get('/testwhile',function(Request $request,Response $response)use($curl){
     $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
     $response=$response->withAddedHeader('Content-Type','application/json');
-    $x=0;
-   do {
-       $re = $curl->gethttpl("http://api.uminfor.cn/city_nedb.php/getCity1?city_id=".$x);//获取html文字
-//       return $response->withJson($re);
-       $arr=(array)json_decode($re,true);
-       echo $arr['city']['name'];
-       $x++;
-     } while ($x<=50);
+    date_default_timezone_set("PRC");
+//   do {
+//       $re = $curl->gethttpl("http://api.uminfor.cn/city_nedb.php/getCity1?city_id=".$x);//获取html文字
+////       return $response->withJson($re);
+//       $arr=(array)json_decode($re,true);
+//       echo $arr['city']['name'];
+//       $x++;
+//     } while ($x<=50);
+    $time1=time();
+     for($x=$time1;$x<($time1+10);$x++){
+         $re = $curl->gethttpl("http://api.uminfor.cn/city_nedb.php/getCity1?city_id=".$x);
+         $arr=(array)json_decode($re,true);
+         echo $arr['city']['name'];
+         sleep(1);
+     }
 });
 
 
