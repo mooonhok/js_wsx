@@ -112,19 +112,21 @@ $app->post('/mycurldemo',function(Request $request,Response $response)use($curl)
     }else{
         return $response->withJson(array('desc'=>"缺少请求类型"));
     }
-
-//    $url='https://api.uminfo.cn/adminall.php/sign';
-//    $header=array(
-//    "application/json"=>"charset=utf-8"
-//);
-//    $array = array(
-//        "name"=>"admin",
-//        "password"=>"123456"
-//    );
-//    $admin=$curl->postmethod($url,$header,$array);
-//    $city2=$admin['admin']['username'];
-//    return $response->withJson(array("result"=>"1","desc"=>$city2));
 });
+
+
+
+$app->get('/testwhile',function(Request $request,Response $response)use($curl){
+    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response=$response->withAddedHeader('Content-Type','application/json');
+    $x=0;
+   do {
+       $re = $curl->gethttpl("http://api.uminfor.cn/city_nedb.php/getCity1?city_id=".$x);//获取html文字
+       return $response->withJson($re);
+       $x++;
+     } while ($x<=50);
+});
+
 
 
 
