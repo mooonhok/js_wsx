@@ -123,8 +123,10 @@ $app->get('/testwhile',function(Request $request,Response $response)use($curl){
     $x=1;
    do {
        $re = $curl->gethttpl("http://api.uminfor.cn/city_nedb.php/getCity1?city_id=".$x);//获取html文字
-//       return $response->withJson($re);
        $arr=(array)json_decode($re,true);
+       if($arr['city']['name']=="南宫市"){
+           break;
+       }
        echo $arr['city']['name'];
        sleep(1);
        $x++;
