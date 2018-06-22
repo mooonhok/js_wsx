@@ -122,7 +122,8 @@ $app->get('/testwhile',function(Request $request,Response $response)use($curl){
     $x=0;
    do {
        $re = $curl->gethttpl("http://api.uminfor.cn/city_nedb.php/getCity1?city_id=".$x);//获取html文字
-       return $response->withJson($re);
+//       return $response->withJson($re);
+       echo $re;
        $x++;
      } while ($x<=50);
 });
