@@ -40,10 +40,10 @@ $app->get('/getRoutes',function(Request $request,Response $response){
         }
              $array1=array_values(array_unset_tt($array1,'id'));
         if($array1!=null){
-            for($i=0;$i<count($array1);$i++){
-                $num=$i+1;
-                $array1[$i]['number']=$num;
-            }
+//            for($i=0;$i<count($array1);$i++){
+//                $num=$i+1;
+//                $array1[$i]['number']=$num;
+//            }
             return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$array2));
         }else{
             return $response->withJson(array("result"=>"2","desc"=>"尚未有数据"));
