@@ -42,8 +42,7 @@ $app->get('/getRoutes',function(Request $request,Response $response){
         if($array1!=null){
             for($i=0;$i<count($array1);$i++){
                 $num=$i+1;
-                $array2['number']=$num;
-                $array2['route']=$array1[$i];
+                $array1[$i]['number']=$num;
             }
             return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$array2));
         }else{
