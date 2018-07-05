@@ -198,6 +198,9 @@
 				text-align:center;
 				border:1px solid #9e9e9e;
 			}
+			table tr td div{
+				font-size:15px;
+			}
 			table input{
 				width:66px;
 				height:28px;
@@ -290,6 +293,65 @@
 			#carousel .pager a.selected{
 				background:transparent url(images/carousel_control.png) no-repeat -12px -32px;
 				text-decoration:underline;				
+			}
+			.contact-view{
+				position:fixed;
+				bottom:20px;
+				right:0;
+				color:#ffffff;
+				z-index:999;
+			}
+			.contact-img{
+				display:block;
+				width:40px;
+				height:40px;
+				font-size:15px;
+				margin-top:10px;
+				background:#444444;
+				cursor:pointer;
+			}
+			.contact-img:hover{
+				background:#f44749;
+			}
+			.contact-img:nth-child(5):hover{
+				background:#aaaaaa;
+			}
+			.contact-img img{
+				width:22px;
+				height:22px;
+				margin-top:9px;
+				margin-left:9px;
+			}
+			.contact-tip{
+				display:none;
+				height:32px;
+				background:#f44749;
+				position:absolute;
+				right:50px;
+				margin-top:-36px;
+				padding:0 6px;
+				white-space:nowrap;
+			}
+			.arrow{
+				position:absolute;
+				width:10px;
+				height:10px;
+				top:12px;
+				right:-10px;
+			}
+			.arrow em{
+				display:block;
+				font-size:0;
+				line-height:0;
+				border-top:6px solid transparent;
+				border-bottom:1px solid transparent;
+				border-right:1px solid transparent;
+				border-left:9px solid #f44749;
+			}
+			.tip-content{
+				font-size:15px;
+				line-height:32px;
+				text-align:right;
 			}
 		</style>
 	</head>
@@ -496,14 +558,22 @@
 						</tr>
 						<tr v-for="item in route2">
 							<td width="7%" v-if="item.num!=0" rowspan="{{item.num}}">{{item.province}}</td>
-							<td width="13%">{{item.line}}</td>
-							<td width="8%">{{item.brand}}</td>
-							<td width="8%">{{item.time}}</td>
-							<td width="11%">{{item.price_heavy}}</td>
-							<td width="11%">{{item.price_light}}</td>
-							<td width="14%">{{item.place}}</td>
-							<td width="19%">{{item.comment}}</td>
-							<td width="9%"><input type="button" value="下单" onclick="order()" /></td>
+							<td width="13%" v-if="item.number%2==1" style="background:#ffffff">{{item.line}}</td>
+							<td width="13%" v-if="item.number%2==0" style="background:#f6f6f6">{{item.line}}</td>
+							<td width="8%" v-if="item.number%2==1" style="background:#ffffff">{{item.brand}}</td>
+							<td width="8%" v-if="item.number%2==0" style="background:#f6f6f6">{{item.brand}}</td>
+							<td width="8%" v-if="item.number%2==1" style="background:#ffffff">{{item.time}}</td>
+							<td width="8%" v-if="item.number%2==0" style="background:#f6f6f6">{{item.time}}</td>
+							<td width="11%" v-if="item.number%2==1" style="background:#ffffff">{{item.price_heavy}}</td>
+							<td width="11%" v-if="item.number%2==0" style="background:#f6f6f6">{{item.price_heavy}}</td>
+							<td width="11%" v-if="item.number%2==1" style="background:#ffffff">{{item.price_light}}</td>
+							<td width="11%" v-if="item.number%2==0" style="background:#f6f6f6">{{item.price_light}}</td>
+							<td width="14%" v-if="item.number%2==1" style="background:#ffffff">{{item.place}}</td>
+							<td width="14%" v-if="item.number%2==0" style="background:#f6f6f6">{{item.place}}</td>
+							<td width="19%" v-if="item.number%2==1" style="background:#ffffff">{{item.comment}}</td>
+							<td width="19%" v-if="item.number%2==0" style="background:#f6f6f6">{{item.comment}}</td>
+							<td width="9%" v-if="item.number%2==1" style="background:#ffffff"><input type="button" value="下单" onclick="order()" /></td>
+							<td width="9%" v-if="item.number%2==0" style="background:#f6f6f6"><input type="button" value="下单" onclick="order()" /></td>
 						</tr>
 					</table>
 					<table cellpadding="0" cellspacing="0" frame="void" rules="all">
@@ -522,14 +592,22 @@
 						</tr>
 						<tr v-for="item in route1">
 							<td width="7%" v-if="item.num!=0" rowspan="{{item.num}}">{{item.province}}</td>
-							<td width="13%">{{item.line}}</td>
-							<td width="8%">{{item.brand}}</td>
-							<td width="8%">{{item.time}}</td>
-							<td width="11%">{{item.price_heavy}}</td>
-							<td width="11%">{{item.price_light}}</td>
-							<td width="14%">{{item.place}}</td>
-							<td width="19%">{{item.comment}}</td>
-							<td width="9%"><input type="button" value="下单" onclick="order()" /></td>
+							<td width="13%" v-if="item.number%2==1" style="background:#ffffff">{{item.line}}</td>
+							<td width="13%" v-if="item.number%2==0" style="background:#f6f6f6">{{item.line}}</td>
+							<td width="8%" v-if="item.number%2==1" style="background:#ffffff">{{item.brand}}</td>
+							<td width="8%" v-if="item.number%2==0" style="background:#f6f6f6">{{item.brand}}</td>
+							<td width="8%" v-if="item.number%2==1" style="background:#ffffff">{{item.time}}</td>
+							<td width="8%" v-if="item.number%2==0" style="background:#f6f6f6">{{item.time}}</td>
+							<td width="11%" v-if="item.number%2==1" style="background:#ffffff">{{item.price_heavy}}</td>
+							<td width="11%" v-if="item.number%2==0" style="background:#f6f6f6">{{item.price_heavy}}</td>
+							<td width="11%" v-if="item.number%2==1" style="background:#ffffff">{{item.price_light}}</td>
+							<td width="11%" v-if="item.number%2==0" style="background:#f6f6f6">{{item.price_light}}</td>
+							<td width="14%" v-if="item.number%2==1" style="background:#ffffff">{{item.place}}</td>
+							<td width="14%" v-if="item.number%2==0" style="background:#f6f6f6">{{item.place}}</td>
+							<td width="19%" v-if="item.number%2==1" style="background:#ffffff">{{item.comment}}</td>
+							<td width="19%" v-if="item.number%2==0" style="background:#f6f6f6">{{item.comment}}</td>
+							<td width="9%" v-if="item.number%2==1" style="background:#ffffff"><input type="button" value="下单" onclick="order()" /></td>
+							<td width="9%" v-if="item.number%2==0" style="background:#f6f6f6"><input type="button" value="下单" onclick="order()" /></td>
 						</tr>
 					</table>
 				</div>
@@ -568,6 +646,23 @@
 			<div class="prompt-bottom">
 				<input type="button" value="知道了" onclick="a_know()" />
 			</div>
+		</div>
+		<div class="contact-view">
+			<a href="#" class="contact-img" onmouseover="showTip(0)" onmouseout="hideTip()"><img src="images/cqq.png" /></a>
+			<div class="contact-tip">
+				<div class="arrow">
+					<em></em>
+				</div>
+				<div class="tip-content">2972769552</div>
+			</div>
+			<a href="#" class="contact-img" onmouseover="showTip(1)" onmouseout="hideTip()"><img src="images/cphone.png" /></a>
+			<div class="contact-tip">
+				<div class="arrow">
+					<em></em>
+				</div>
+				<div class="tip-content">0523-81165089</div>
+			</div>
+			<a href="#top" class="contact-img"><img src="images/ctop.png" /></a>
 		</div>
 		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="js/common.js"></script>
@@ -657,6 +752,7 @@
 					data:JSON.stringify({
 					}),
 					success:function(msg){
+						console.log(msg);
 						vm.route1=msg.routes;
 					},
 					error:function(e){
@@ -671,6 +767,7 @@
 					data:JSON.stringify({
 					}),
 					success:function(msg){
+						console.log(msg);
 						vm.route2=msg.routes;
 					},
 					error:function(e){
@@ -718,6 +815,14 @@
 				$(".view1-right-content-item").eq(7).children("img").attr("src","images/ps7.png");
 				$(".view1-right-content-item").children("img").css("background","#ffffff");
 				$(".view1-right-content-item").children("span").css("color","#000000");
+			}
+			
+			function showTip(index){
+				$(".contact-tip").eq(index).css("display","block");
+			}
+			
+			function hideTip(){
+				$(".contact-tip").css("display","none");
 			}
 			
 			function user_login(){
@@ -803,19 +908,5 @@
 				}
 			}
 		</script>
-		<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https'){
-   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-  }
-  else{
-  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-  }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
 	</body>
 </html>
