@@ -20,6 +20,7 @@ $app->get('/getRoutes',function(Request $request,Response $response){
     $response=$response->withAddedHeader('Content-Type','application/json');
     $database=localhost();
     $type=$request->getParam('type');//获取请求路径后数据
+    $array2=array();
        $selectStatement = $database->select()
         ->from('route')
         ->where('type','=',$type);
@@ -39,7 +40,12 @@ $app->get('/getRoutes',function(Request $request,Response $response){
         }
              $array1=array_values(array_unset_tt($array1,'id'));
         if($array1!=null){
-            return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$array1));
+            for($i=0;$i<count($array1);$i++){
+                $num=$i+1;
+                $array2['number']=$num;
+                $array2['route']=$array1[$i];
+            }
+            return $response->withJson(array("result" => "0", "desc" => "success",'routes'=>$array2));
         }else{
             return $response->withJson(array("result"=>"2","desc"=>"尚未有数据"));
         }
