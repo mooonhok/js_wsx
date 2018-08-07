@@ -30,6 +30,7 @@ $app->get('/getLines',function(Request $request,Response $response){
             $stmt = $selectStatement->execute();
             $data2 = $stmt->fetchAll();
             $data[$x]['line-citys']=$data2;
+            $data[$x]['count']=count($data2);
         }
         return $response->withJson(array("result" => "0", "desc" => "success",'lines'=>$data));
 
