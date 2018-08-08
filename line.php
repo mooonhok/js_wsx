@@ -12,7 +12,6 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use Slim\PDO\Database;
 use Slim\PDO\Statement;
 use Slim\PDO\Statement\SelectStatement;
-
 $app = new \Slim\App();
 
 $app->get('/getLines',function(Request $request,Response $response){
@@ -53,9 +52,12 @@ $app->get('/getLine',function(Request $request,Response $response){
             ->where('line_id','=',$id);
         $stmt = $selectStatement->execute();
         $data2 = $stmt->fetchAll();
+        for($x=0;$x<count($data2);$x++){
+            $data2[$x]['num']=$x+1;
+        }
         $data['line_citys']=$data2;
         $data['count']=count($data2);
-    return $response->withJson(array("result" => "0", "desc" => "success",'line'=>$data));
+        return $response->withJson(array("result" => "0", "desc" => "success",'line'=>$data));
     }else{
         return $response->withJson(array("result" => "1", "desc" => "缺少id"));
     }
