@@ -37,6 +37,30 @@ $app->get('/getLines',function(Request $request,Response $response){
 });
 
 
+$app->get('/getLine',function(Request $request,Response $response){
+    $response=$response->withAddedHeader('Access-Control-Allow-Origin','*');
+    $response=$response->withAddedHeader('Content-Type','application/json');
+    $database=localhost();
+    $id=$request->getParam('id');
+    if($id!=null||$id!=""){
+        $selectStatement = $database->select()
+            ->from('line')
+            ->where('id','=',$id);
+        $stmt = $selectStatement->execute();
+        $data = $stmt->fetchAll();
+        $selectStatement = $database->select()
+            ->from('line_city')
+            ->where('line_id','=',$id);
+        $stmt = $selectStatement->execute();
+        $data2 = $stmt->fetchAll();
+        $data['line-citys']=$data2;
+        $data['count']=count($data2);
+    return $response->withJson(array("result" => "0", "desc" => "success",'line'=>$data));
+    }else{
+        return $response->withJson(array("result" => "1", "desc" => "缺少id"));
+    }
+});
+
 $app->run();
 
 function localhost()
