@@ -29,7 +29,7 @@ $app->get('/getLines',function(Request $request,Response $response){
                 ->where('line_id','=',$data[$x]['id']);
             $stmt = $selectStatement->execute();
             $data2 = $stmt->fetchAll();
-            $data[$x]['line-citys']=$data2;
+            $data[$x]['line_citys']=$data2;
             $data[$x]['count']=count($data2);
         }
         return $response->withJson(array("result" => "0", "desc" => "success",'lines'=>$data));
@@ -53,7 +53,7 @@ $app->get('/getLine',function(Request $request,Response $response){
             ->where('line_id','=',$id);
         $stmt = $selectStatement->execute();
         $data2 = $stmt->fetchAll();
-        $data['line-citys']=$data2;
+        $data['line_citys']=$data2;
         $data['count']=count($data2);
     return $response->withJson(array("result" => "0", "desc" => "success",'line'=>$data));
     }else{
