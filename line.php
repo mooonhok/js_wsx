@@ -47,7 +47,7 @@ $app->get('/getLine',function(Request $request,Response $response){
             ->from('line')
             ->where('id','=',$id);
         $stmt = $selectStatement->execute();
-        $data = $stmt->fetchAll();
+        $data = $stmt->fetch();
         $selectStatement = $database->select()
             ->from('line_city')
             ->where('line_id','=',$id);
