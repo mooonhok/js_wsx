@@ -28,6 +28,14 @@ $app->get('/getLines',function(Request $request,Response $response){
                 ->where('line_id','=',$data[$x]['id']);
             $stmt = $selectStatement->execute();
             $data2 = $stmt->fetchAll();
+            for($j=0;$j<count($data2);$j++){
+                $selectStatement = $database->select()
+                    ->from('city')
+                    ->where('id','=',$data2[$j]['city_id']);
+                $stmt = $selectStatement->execute();
+                $data3 = $stmt->fetch();
+                $data2[$j]['city_name']=$data3['name'];
+            }
             $data[$x]['line_citys']=$data2;
             $data[$x]['count']=count($data2);
         }
@@ -54,6 +62,12 @@ $app->get('/getLine',function(Request $request,Response $response){
         $data2 = $stmt->fetchAll();
         for($x=0;$x<count($data2);$x++){
             $data2[$x]['num']=$x+1;
+            $selectStatement = $database->select()
+                ->from('city')
+                ->where('id','=',$data2[$x]['city_id']);
+            $stmt = $selectStatement->execute();
+            $data3 = $stmt->fetch();
+            $data2[$x]['city_name']=$data3['name'];
         }
         $data['line_citys']=$data2;
         $data['count']=count($data2);
